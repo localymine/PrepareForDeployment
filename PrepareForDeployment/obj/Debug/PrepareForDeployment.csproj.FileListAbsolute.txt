@@ -1,0 +1,9 @@
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csprojResolveAssemblyReference.cache
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Properties.Resources.resources
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csproj.GenerateResource.Cache
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe.config
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.pdb
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.frmMain.resources
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.exe
+c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.pdb
