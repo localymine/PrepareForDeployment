@@ -25,4 +25,4 @@ DEV_GMAWEB/Content/Images/ui-icons_d19405_256x240.png
 DEV_GMAWEB/Scripts/jquery-1.6.2.min.js
 DEV_GMAWEB/Scripts/jquery-ui-1.8.14.custom.min.js
 DEV_GMAWEB/Scripts/jquery.cropzoom.js
-DEV=GMAWEB/bin/GMA.Customer.dll
+DEV_GMAWEB/bin/GMA.Customer.dll

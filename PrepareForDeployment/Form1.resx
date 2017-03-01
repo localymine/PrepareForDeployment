@@ -120,4 +120,20 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="rtb_list_files.Text" xml:space="preserve">
+    <value>C:/DEV_GMAWEB/Areas/GMA.Customer/Views/Template/EditCard.cshtm
+C:/DEV_GMAWEB/Areas/GMA.Customer/Views/Template/ZoomAndCropImage.cshtml
+C:/DEV_GMAWEB/Areas/GMA.Customer/bin/GMA.Customer.dll
+C:/DEV_GMAWEB/Content/jquery-ui-1.7.2.custom.css
+C:/DEV_GMAWEB/Content/jquery.cropzoom.css
+C:/DEV_GMAWEB/Content/Images/ui-bg_gloss-wave_45_817865_500x100.png 
+C:/DEV_GMAWEB/Content/Images/ui-bg_gloss-wave_70_ffdd57_500x100.png
+C:/DEV_GMAWEB/Content/Images/ui-bg_gloss-wave_60_fece2f_500x100.png
+C:/DEV_GMAWEB/Content/Images/ui-bg_inset-soft_30_ffffff_1x100.png
+C:/DEV_GMAWEB/Content/Images/ui-icons_d19405_256x240.png
+C:/DEV_GMAWEB/Scripts/jquery-1.6.2.min.js
+C:/DEV_GMAWEB/Scripts/jquery-ui-1.8.14.custom.min.js
+C:/DEV_GMAWEB/Scripts/jquery.cropzoom.js
+C:/DEV_GMAWEB/bin/GMA.Customer.dll</value>
+  </data>
 </root>
