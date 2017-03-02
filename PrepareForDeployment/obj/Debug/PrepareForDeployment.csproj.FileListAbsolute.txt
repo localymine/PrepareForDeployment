@@ -10,9 +10,10 @@ c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\Prepar
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe.config
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.pdb
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csprojResolveAssemblyReference.cache
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.frmMain.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Properties.Resources.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csproj.GenerateResource.Cache
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.exe
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.pdb
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form2.resources
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form3.resources

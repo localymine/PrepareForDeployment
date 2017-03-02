@@ -41,9 +41,9 @@
             this.btnBrowserBackup = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tb_sub_deploy_folder = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lb_tb_sub_deploy_folder = new System.Windows.Forms.Label();
             this.tb_sub_backup_folder = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_replace = new System.Windows.Forms.Button();
@@ -57,20 +57,23 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCreateReleaseNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deploymentFlowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDeploymentFlow = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rtb_release_note = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.rtb_release_note = new System.Windows.Forms.RichTextBox();
+            this.btnReadFolder = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -95,6 +98,8 @@
             // btnBrowserProduction
             // 
             this.btnBrowserProduction.AutoSize = true;
+            this.btnBrowserProduction.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowserProduction.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnBrowserProduction.Location = new System.Drawing.Point(6, 27);
             this.btnBrowserProduction.Name = "btnBrowserProduction";
             this.btnBrowserProduction.Size = new System.Drawing.Size(83, 13);
@@ -165,6 +170,8 @@
             // btnBrowserBackup
             // 
             this.btnBrowserBackup.AutoSize = true;
+            this.btnBrowserBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowserBackup.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btnBrowserBackup.Location = new System.Drawing.Point(6, 27);
             this.btnBrowserBackup.Name = "btnBrowserBackup";
             this.btnBrowserBackup.Size = new System.Drawing.Size(69, 13);
@@ -175,9 +182,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tb_sub_deploy_folder);
-            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.lb_tb_sub_deploy_folder);
             this.groupBox3.Controls.Add(this.tb_sub_backup_folder);
-            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.lb_tb_sub_backup_folder);
             this.groupBox3.Location = new System.Drawing.Point(12, 185);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(267, 86);
@@ -193,14 +200,14 @@
             this.tb_sub_deploy_folder.TabIndex = 3;
             this.tb_sub_deploy_folder.Text = "deploy";
             // 
-            // label7
+            // lb_tb_sub_deploy_folder
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Deploy Sub Folder Name";
+            this.lb_tb_sub_deploy_folder.AutoSize = true;
+            this.lb_tb_sub_deploy_folder.Location = new System.Drawing.Point(6, 53);
+            this.lb_tb_sub_deploy_folder.Name = "lb_tb_sub_deploy_folder";
+            this.lb_tb_sub_deploy_folder.Size = new System.Drawing.Size(125, 13);
+            this.lb_tb_sub_deploy_folder.TabIndex = 2;
+            this.lb_tb_sub_deploy_folder.Text = "Deploy Sub Folder Name";
             // 
             // tb_sub_backup_folder
             // 
@@ -210,20 +217,19 @@
             this.tb_sub_backup_folder.TabIndex = 1;
             this.tb_sub_backup_folder.Text = "bk";
             // 
-            // label6
+            // lb_tb_sub_backup_folder
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Backup Sub Folder Name";
+            this.lb_tb_sub_backup_folder.AutoSize = true;
+            this.lb_tb_sub_backup_folder.Location = new System.Drawing.Point(6, 27);
+            this.lb_tb_sub_backup_folder.Name = "lb_tb_sub_backup_folder";
+            this.lb_tb_sub_backup_folder.Size = new System.Drawing.Size(129, 13);
+            this.lb_tb_sub_backup_folder.TabIndex = 0;
+            this.lb_tb_sub_backup_folder.Text = "Backup Sub Folder Name";
             // 
             // rtb_list_files
             // 
             this.rtb_list_files.Location = new System.Drawing.Point(6, 51);
             this.rtb_list_files.Name = "rtb_list_files";
-            this.rtb_list_files.ShortcutsEnabled = false;
             this.rtb_list_files.Size = new System.Drawing.Size(452, 142);
             this.rtb_list_files.TabIndex = 4;
             this.rtb_list_files.Text = "";
@@ -231,6 +237,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnReadFolder);
             this.groupBox4.Controls.Add(this.btn_replace);
             this.groupBox4.Controls.Add(this.tb_text2);
             this.groupBox4.Controls.Add(this.tb_text1);
@@ -274,9 +281,9 @@
             // 
             this.btnLoadFile.Location = new System.Drawing.Point(6, 22);
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(120, 23);
+            this.btnLoadFile.Size = new System.Drawing.Size(75, 23);
             this.btnLoadFile.TabIndex = 5;
-            this.btnLoadFile.Text = "Load List From File";
+            this.btnLoadFile.Text = "Load File";
             this.btnLoadFile.UseVisualStyleBackColor = true;
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
@@ -327,7 +334,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(760, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(766, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -335,77 +342,62 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCreateReleaseNote,
-            this.exitToolStripMenuItem});
+            this.btnExitMenu});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // btnCreateReleaseNote
             // 
             this.btnCreateReleaseNote.Name = "btnCreateReleaseNote";
-            this.btnCreateReleaseNote.Size = new System.Drawing.Size(157, 22);
-            this.btnCreateReleaseNote.Text = "Release Note ▼";
+            this.btnCreateReleaseNote.Size = new System.Drawing.Size(155, 22);
+            this.btnCreateReleaseNote.Text = "&Release Note ▼";
             this.btnCreateReleaseNote.Click += new System.EventHandler(this.btnCreateReleaseNote_Click);
             // 
-            // exitToolStripMenuItem
+            // btnExitMenu
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.btnExitMenu.Name = "btnExitMenu";
+            this.btnExitMenu.Size = new System.Drawing.Size(155, 22);
+            this.btnExitMenu.Text = "E&xit";
+            this.btnExitMenu.Click += new System.EventHandler(this.btnExitMenu_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deploymentFlowToolStripMenuItem,
-            this.aboutToolStripMenuItem1});
+            this.menuDeploymentFlow,
+            this.menuAbout});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.aboutToolStripMenuItem.Text = "Help";
+            this.aboutToolStripMenuItem.Text = "&Help";
             // 
-            // aboutToolStripMenuItem1
+            // menuDeploymentFlow
             // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
+            this.menuDeploymentFlow.Name = "menuDeploymentFlow";
+            this.menuDeploymentFlow.Size = new System.Drawing.Size(165, 22);
+            this.menuDeploymentFlow.Text = "&Deployment Rule";
+            this.menuDeploymentFlow.Click += new System.EventHandler(this.menuDeploymentFlow_Click);
             // 
-            // deploymentFlowToolStripMenuItem
+            // menuAbout
             // 
-            this.deploymentFlowToolStripMenuItem.Name = "deploymentFlowToolStripMenuItem";
-            this.deploymentFlowToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.deploymentFlowToolStripMenuItem.Text = "Deployment Flow";
+            this.menuAbout.Name = "menuAbout";
+            this.menuAbout.Size = new System.Drawing.Size(167, 22);
+            this.menuAbout.Text = "&About";
+            this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.rtb_release_note);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 283);
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Location = new System.Drawing.Point(0, 277);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(752, 213);
+            this.panel1.Size = new System.Drawing.Size(746, 220);
             this.panel1.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Create Release Note";
-            // 
-            // rtb_release_note
-            // 
-            this.rtb_release_note.Location = new System.Drawing.Point(9, 21);
-            this.rtb_release_note.Name = "rtb_release_note";
-            this.rtb_release_note.Size = new System.Drawing.Size(740, 160);
-            this.rtb_release_note.TabIndex = 1;
-            this.rtb_release_note.Text = "";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(674, 187);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(650, 48);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -413,13 +405,56 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // rtb_release_note
+            // 
+            this.rtb_release_note.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
+            this.rtb_release_note.Name = "rtb_release_note";
+            this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
+            this.rtb_release_note.TabIndex = 1;
+            this.rtb_release_note.Text = "";
+            // 
+            // btnReadFolder
+            // 
+            this.btnReadFolder.Location = new System.Drawing.Point(83, 22);
+            this.btnReadFolder.Name = "btnReadFolder";
+            this.btnReadFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnReadFolder.TabIndex = 9;
+            this.btnReadFolder.Text = "Read Folder";
+            this.btnReadFolder.UseVisualStyleBackColor = true;
+            this.btnReadFolder.Click += new System.EventHandler(this.btnReadFolder_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnOpen);
+            this.groupBox5.Controls.Add(this.rtb_release_note);
+            this.groupBox5.Controls.Add(this.btnSave);
+            this.groupBox5.Location = new System.Drawing.Point(12, 9);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(731, 208);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Create Release Note";
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpen.Location = new System.Drawing.Point(650, 19);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(75, 23);
+            this.btnOpen.TabIndex = 3;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(760, 506);
+            this.ClientSize = new System.Drawing.Size(766, 506);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_run_rollback);
             this.Controls.Add(this.btn_run_deploy);
@@ -449,7 +484,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,9 +503,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tb_sub_deploy_folder;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lb_tb_sub_deploy_folder;
         private System.Windows.Forms.TextBox tb_sub_backup_folder;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lb_tb_sub_backup_folder;
         private System.Windows.Forms.RichTextBox rtb_list_files;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnLoadFile;
@@ -485,14 +520,16 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnCreateReleaseNote;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnExitMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deploymentFlowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuDeploymentFlow;
+        private System.Windows.Forms.ToolStripMenuItem menuAbout;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RichTextBox rtb_release_note;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnReadFolder;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnOpen;
     }
 }
 

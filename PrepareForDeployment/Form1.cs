@@ -35,10 +35,11 @@ namespace PrepareForDeployment
             InitializeComponent();
 
             AddContextMenu(rtb_list_files);
+            AddContextMenu(rtb_release_note);
+
+            DisableEnableControl(false);
 
             _strCbProductionPath = Directory.GetCurrentDirectory();
-
-            Console.WriteLine(_strCbProductionPath);
 
             // load history production path
             LoadDataToCombobox(Path.Combine(_strCbProductionPath, "pd.dat"), cb_production_path);
@@ -49,11 +50,10 @@ namespace PrepareForDeployment
 
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-
-            GetInfoFromForm();
-
             try
             {
+                GetInfoFromForm();
+
                 // make folder
                 MkdirFolder(_strSubBackupPath);
                 MkdirFolder(_strSubDeployPath);
@@ -75,11 +75,23 @@ namespace PrepareForDeployment
 
                 // save history backup path
                 SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "bk.dat"), cb_backup_path);
+
+                // active button control
+                DisableEnableControl(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void DisableEnableControl(bool flag)
+        {
+            btn_run_backup.Enabled = flag;
+            btn_run_deploy.Enabled = flag;
+            btn_run_rollback.Enabled = flag;
+            btnOpen.Enabled = flag;
+            btnSave.Enabled = flag;
         }
 
         private void GetInfoFromForm()
@@ -103,6 +115,26 @@ namespace PrepareForDeployment
             _strBackupBat = @Path.Combine(_strBackupPathCur, "1_Backup.bat");
             _strDeployBat = @Path.Combine(_strBackupPathCur, "2_Deploy.bat");
             _strRollbackBat = @Path.Combine(_strBackupPathCur, "3_Rollback.bat");
+
+            if (string.IsNullOrEmpty(cb_production_path.Text) || string.IsNullOrWhiteSpace(cb_production_path.Text))
+            {
+                throw new System.ArgumentException(btnBrowserProduction.Text + " is not empty");
+            }
+            //
+            if (string.IsNullOrEmpty(cb_backup_path.Text) || string.IsNullOrWhiteSpace(cb_backup_path.Text))
+            {
+                throw new System.ArgumentException(btnBrowserBackup.Text + " is not empty");
+            }
+            //
+            if (string.IsNullOrEmpty(tb_sub_backup_folder.Text) || string.IsNullOrWhiteSpace(tb_sub_backup_folder.Text))
+            {
+                throw new System.ArgumentException(lb_tb_sub_backup_folder.Text + " is not empty");
+            }
+            //
+            if (string.IsNullOrEmpty(tb_sub_deploy_folder.Text) || string.IsNullOrWhiteSpace(tb_sub_deploy_folder.Text))
+            {
+                throw new System.ArgumentException(lb_tb_sub_deploy_folder.Text + " is not empty");
+            }
         }
 
         private string[] Lines(string source)
@@ -483,6 +515,101 @@ namespace PrepareForDeployment
             {
 
             }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Support Files | *.txt; *.bat; *.log; *.dat; *.rm;";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    rtb_release_note.Clear();
+                    using (StreamReader sr = File.OpenText(dialog.FileName))
+                    {
+                        string s = "";
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            rtb_release_note.AppendText(s);
+                            rtb_release_note.AppendText(Environment.NewLine);
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private List<string> AllFiles = new List<string>();
+        private void ParsePath(string path)
+        {
+            string[] SubDirs = Directory.GetDirectories(path);
+            AllFiles.AddRange(SubDirs);
+            AllFiles.AddRange(Directory.GetFiles(path));
+            foreach (string subdir in SubDirs)
+                ParsePath(subdir);
+        }
+
+        private void btnReadFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var folderDialog = new FolderBrowserDialog())
+                {
+                    if (folderDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string selectedPath = folderDialog.SelectedPath;
+                        ParsePath(selectedPath);
+                        //
+                        foreach (string item in AllFiles)
+                        {
+                            // get the file attributes for file or directory
+                            FileAttributes attr = File.GetAttributes(item);
+                            //detect whether its a directory or file
+                            if (!attr.HasFlag(FileAttributes.Directory))
+                            {
+                                rtb_list_files.AppendText(item);
+                                rtb_list_files.AppendText(Environment.NewLine);
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+        }
+
+        private void btnExitMenu_Click(object sender, EventArgs e)
+        {
+            if (System.Windows.Forms.Application.MessageLoop)
+            {
+                // WinForms app
+                System.Windows.Forms.Application.Exit();
+            }
+            else
+            {
+                // Console app
+                System.Environment.Exit(1);
+            }
+        }
+
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            Form2 frmAbout = new Form2();
+            frmAbout.Show();
+        }
+
+        private void menuDeploymentFlow_Click(object sender, EventArgs e)
+        {
+            Form3 frmDeployment = new Form3();
+            frmDeployment.Show();
         }
     }
 }
