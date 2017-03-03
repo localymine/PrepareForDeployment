@@ -17,3 +17,5 @@ C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\Pr
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.pdb
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form2.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form3.resources
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form2.resources
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form3.resources

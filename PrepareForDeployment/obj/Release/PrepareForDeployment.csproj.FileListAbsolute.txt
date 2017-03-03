@@ -6,3 +6,6 @@ C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\Prepar
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csproj.GenerateResource.Cache
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.exe
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.pdb
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form2.resources
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form3.resources
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csprojResolveAssemblyReference.cache

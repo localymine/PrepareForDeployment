@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace PrepareForDeployment
 {
@@ -210,10 +211,46 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     foreach (string file in _arrListFiles)
                     {
-                        sw.WriteLine("copy " + Path.Combine(_strProductionPath, file) + " " + Path.Combine(_strSubBackupPath, file));
+                        string productionFilePath = Path.Combine(_strProductionPath, file);
+                        if (File.Exists(productionFilePath))
+                        {
+                            sw.WriteLine("copy " + productionFilePath + " " + Path.Combine(_strSubBackupPath, file));
+                        }
                     }
                     sw.WriteLine(Environment.NewLine);
                     sw.WriteLine("pause");
+                }
+                //
+                // https://msdn.microsoft.com/en-us/library/system.diagnostics.process.exitcode.aspx
+                //
+                if (File.Exists(_strBackupBat))
+                {
+                    System.Diagnostics.Process myProcess = null;
+                    //
+                    try
+                    {
+                        // Start the process.
+                        myProcess = Process.Start(_strBackupBat);
+                        // Display the process statistics until
+                        // the user closes the program.
+                        do
+                        {
+                            if (!myProcess.HasExited)
+                            {
+                                // Refresh the current process property values.
+                                myProcess.Refresh();
+                            }
+                        }
+                        while (!myProcess.WaitForExit(3000));
+                    }
+                    finally
+                    {
+                        if (myProcess != null)
+                        {
+                            myProcess.Close();
+                        }
+                    }
+                    //
                 }
             }
             catch(Exception ex)
@@ -276,8 +313,17 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     foreach (string file in _arrListFiles)
                     {
-                        sw.WriteLine("del " + Path.Combine(_strProductionPath, file));
-                        sw.WriteLine("copy " + Path.Combine(_strSubBackupPath, file) + " " + Path.Combine(_strProductionPath, file));
+                        string subBackupFilePath = Path.Combine(_strSubBackupPath, file);
+                        // there's no file in backup folder
+                        if (!File.Exists(subBackupFilePath))
+                        {
+                            sw.WriteLine("del " + Path.Combine(_strProductionPath, file));
+                        }
+                        else
+                        {
+                            sw.WriteLine("del " + Path.Combine(_strProductionPath, file));
+                            sw.WriteLine("copy " + subBackupFilePath + " " + Path.Combine(_strProductionPath, file));
+                        }
                         sw.WriteLine(Environment.NewLine);
                     }
                     sw.WriteLine("pause");
