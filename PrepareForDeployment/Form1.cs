@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace PrepareForDeployment
 {
@@ -218,6 +219,15 @@ namespace PrepareForDeployment
                         }
                     }
                     sw.WriteLine(Environment.NewLine);
+                    // log
+                    sw.WriteLine("@echo off");
+                    sw.WriteLine("(");
+                    sw.WriteLine("@echo Execute Backup at %date% %time%");
+                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine(") >> log.txt");
+                    sw.WriteLine(Environment.NewLine);
+                    //
+                    sw.WriteLine("@echo off");
                     sw.WriteLine("pause");
                 }
                 //
@@ -241,7 +251,7 @@ namespace PrepareForDeployment
                                 myProcess.Refresh();
                             }
                         }
-                        while (!myProcess.WaitForExit(3000));
+                        while (!myProcess.WaitForExit(5000));
                     }
                     finally
                     {
@@ -283,6 +293,15 @@ namespace PrepareForDeployment
                         sw.WriteLine("copy " + Path.Combine(_strSubDeployPath, file) + " " + Path.Combine(_strProductionPath, file));
                     }
                     sw.WriteLine(Environment.NewLine);
+                    // log
+                    sw.WriteLine("@echo off");
+                    sw.WriteLine("(");
+                    sw.WriteLine("@echo Execute Deployment at %date% %time%");
+                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine(") >> log.txt");
+                    sw.WriteLine(Environment.NewLine);
+                    //
+                    sw.WriteLine("@echo off");
                     sw.WriteLine("pause");
                 }
             }
@@ -326,6 +345,14 @@ namespace PrepareForDeployment
                         }
                         sw.WriteLine(Environment.NewLine);
                     }
+                    // log
+                    sw.WriteLine("@echo off");
+                    sw.WriteLine("(");
+                    sw.WriteLine("@echo Execute Rollback at %date% %time%");
+                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine(") >> log.txt");
+                    sw.WriteLine(Environment.NewLine);
+                    //
                     sw.WriteLine("pause");
                 }
             }
@@ -649,13 +676,13 @@ namespace PrepareForDeployment
         private void menuAbout_Click(object sender, EventArgs e)
         {
             Form2 frmAbout = new Form2();
-            frmAbout.Show();
+            frmAbout.ShowDialog();
         }
 
         private void menuDeploymentFlow_Click(object sender, EventArgs e)
         {
             Form3 frmDeployment = new Form3();
-            frmDeployment.Show();
+            frmDeployment.ShowDialog();
         }
     }
 }

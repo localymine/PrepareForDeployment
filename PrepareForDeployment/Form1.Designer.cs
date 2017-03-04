@@ -46,6 +46,7 @@
             this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnReadFolder = new System.Windows.Forms.Button();
             this.btn_replace = new System.Windows.Forms.Button();
             this.tb_text2 = new System.Windows.Forms.TextBox();
             this.tb_text1 = new System.Windows.Forms.TextBox();
@@ -62,11 +63,10 @@
             this.menuDeploymentFlow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.rtb_release_note = new System.Windows.Forms.RichTextBox();
-            this.btnReadFolder = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.rtb_release_note = new System.Windows.Forms.RichTextBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -250,6 +250,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
             // 
+            // btnReadFolder
+            // 
+            this.btnReadFolder.Location = new System.Drawing.Point(83, 22);
+            this.btnReadFolder.Name = "btnReadFolder";
+            this.btnReadFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnReadFolder.TabIndex = 9;
+            this.btnReadFolder.Text = "Read Folder";
+            this.btnReadFolder.UseVisualStyleBackColor = true;
+            this.btnReadFolder.Click += new System.EventHandler(this.btnReadFolder_Click);
+            // 
             // btn_replace
             // 
             this.btn_replace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -380,7 +390,7 @@
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(167, 22);
+            this.menuAbout.Size = new System.Drawing.Size(165, 22);
             this.menuAbout.Text = "&About";
             this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
@@ -393,37 +403,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 220);
             this.panel1.TabIndex = 11;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(650, 48);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // rtb_release_note
-            // 
-            this.rtb_release_note.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
-            this.rtb_release_note.Name = "rtb_release_note";
-            this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
-            this.rtb_release_note.TabIndex = 1;
-            this.rtb_release_note.Text = "";
-            // 
-            // btnReadFolder
-            // 
-            this.btnReadFolder.Location = new System.Drawing.Point(83, 22);
-            this.btnReadFolder.Name = "btnReadFolder";
-            this.btnReadFolder.Size = new System.Drawing.Size(75, 23);
-            this.btnReadFolder.TabIndex = 9;
-            this.btnReadFolder.Text = "Read Folder";
-            this.btnReadFolder.UseVisualStyleBackColor = true;
-            this.btnReadFolder.Click += new System.EventHandler(this.btnReadFolder_Click);
             // 
             // groupBox5
             // 
@@ -448,6 +427,27 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // rtb_release_note
+            // 
+            this.rtb_release_note.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
+            this.rtb_release_note.Name = "rtb_release_note";
+            this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
+            this.rtb_release_note.TabIndex = 1;
+            this.rtb_release_note.Text = "";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(650, 48);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,7 +468,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prepare For Deployment";

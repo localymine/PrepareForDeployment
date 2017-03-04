@@ -9,3 +9,18 @@ C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\Prepar
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form2.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form3.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csprojResolveAssemblyReference.cache
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.exe.config
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.exe.manifest
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.application
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.exe
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.pdb
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csprojResolveAssemblyReference.cache
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.frmMain.resources
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form2.resources
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form3.resources
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Properties.Resources.resources
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csproj.GenerateResource.Cache
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.exe.manifest
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.application
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.exe
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.pdb
