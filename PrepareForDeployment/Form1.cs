@@ -223,7 +223,7 @@ namespace PrepareForDeployment
                     sw.WriteLine("@echo off");
                     sw.WriteLine("(");
                     sw.WriteLine("@echo Execute Backup at %date% %time%");
-                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
@@ -296,8 +296,8 @@ namespace PrepareForDeployment
                     // log
                     sw.WriteLine("@echo off");
                     sw.WriteLine("(");
-                    sw.WriteLine("@echo Execute Deployment at %date% %time%");
-                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine("@echo Execute Deploy at %date% %time%");
+                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
@@ -349,12 +349,14 @@ namespace PrepareForDeployment
                     sw.WriteLine("@echo off");
                     sw.WriteLine("(");
                     sw.WriteLine("@echo Execute Rollback at %date% %time%");
-                    sw.WriteLine("@echo ^^--------------------------------------------------------------------------------^^");
+                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
                     sw.WriteLine("pause");
                 }
+                //
+                WriteLogExeBat("BACKUP");
             }
             catch (Exception ex)
             {
@@ -438,6 +440,35 @@ namespace PrepareForDeployment
             }
         }
 
+        private void WriteLogExeBat(string type)
+        {
+            string logFile = Path.Combine(_strBackupPathCur, "log.txt");
+            switch (type)
+            {
+                case "BACKUP":
+                    using (StreamWriter sw = File.AppendText(logFile))
+                    {
+                        sw.WriteLine("Execute Backup at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
+                        sw.WriteLine("++--------------------------------------------------------------------------------++");
+                    }
+                    break;
+                case "DEPLOY":
+                    using (StreamWriter sw = File.AppendText(logFile))
+                    {
+                        sw.WriteLine("Execute Deploy at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
+                        sw.WriteLine("++--------------------------------------------------------------------------------++");
+                    }
+                    break;
+                case "ROLLBACK":
+                    using (StreamWriter sw = File.AppendText(logFile))
+                    {
+                        sw.WriteLine("Execute Rollback at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
+                        sw.WriteLine("++--------------------------------------------------------------------------------++");
+                    }
+                    break;
+            }
+        }
+
         private void btn_run_backup_Click(object sender, EventArgs e)
         {
             try
@@ -445,6 +476,8 @@ namespace PrepareForDeployment
                 if (File.Exists(_strBackupBat))
                 {
                     System.Diagnostics.Process.Start(_strBackupBat);
+                    //
+                    WriteLogExeBat("BACKUP");
                 }
                 else
                 {
@@ -466,6 +499,8 @@ namespace PrepareForDeployment
                     if (MessageBox.Show("Do you really want to deploy The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         System.Diagnostics.Process.Start(_strDeployBat);
+                        //
+                        WriteLogExeBat("DEPLOY");
                     }
                 }
                 else
@@ -488,6 +523,8 @@ namespace PrepareForDeployment
                     if (MessageBox.Show("Do you really want to restore The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         System.Diagnostics.Process.Start(_strRollbackBat);
+                        //
+                        WriteLogExeBat("ROLLBACK");
                     }
                 }
                 else
