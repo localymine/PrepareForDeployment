@@ -126,16 +126,16 @@
             // 
             this.dtpk_cur_time.CustomFormat = "HH:mm tt";
             this.dtpk_cur_time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpk_cur_time.Location = new System.Drawing.Point(175, 52);
+            this.dtpk_cur_time.Location = new System.Drawing.Point(188, 52);
             this.dtpk_cur_time.Name = "dtpk_cur_time";
             this.dtpk_cur_time.ShowUpDown = true;
-            this.dtpk_cur_time.Size = new System.Drawing.Size(83, 20);
+            this.dtpk_cur_time.Size = new System.Drawing.Size(70, 20);
             this.dtpk_cur_time.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(139, 56);
+            this.label5.Location = new System.Drawing.Point(152, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 6;
@@ -145,9 +145,9 @@
             // 
             this.dtpk_cur_date.CustomFormat = "yyyy-MM-dd";
             this.dtpk_cur_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpk_cur_date.Location = new System.Drawing.Point(47, 52);
+            this.dtpk_cur_date.Location = new System.Drawing.Point(42, 52);
             this.dtpk_cur_date.Name = "dtpk_cur_date";
-            this.dtpk_cur_date.Size = new System.Drawing.Size(91, 20);
+            this.dtpk_cur_date.Size = new System.Drawing.Size(75, 20);
             this.dtpk_cur_date.TabIndex = 5;
             // 
             // label4

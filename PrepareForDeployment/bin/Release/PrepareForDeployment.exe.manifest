@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrepareForDeployment.exe" size="672184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrepareForDeployment.exe" size="740280">
       <assemblyIdentity name="PrepareForDeployment" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SDbIjK/PTOnvDI3FXTIErTk1iJ45QvUk6VPSzCr2ivA=</dsig:DigestValue>
+        <dsig:DigestValue>gQ/+lGx1zDr609lcIsLrpL0rNJz2j09GKUq0Zp69k/s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
