@@ -67,6 +67,10 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.rtb_release_note = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cb_deployment_path = new System.Windows.Forms.ComboBox();
+            this.btnBrowserDeployment = new System.Windows.Forms.Label();
+            this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,6 +78,7 @@
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -115,7 +120,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cb_backup_path);
             this.groupBox2.Controls.Add(this.btnBrowserBackup);
-            this.groupBox2.Location = new System.Drawing.Point(12, 93);
+            this.groupBox2.Location = new System.Drawing.Point(12, 154);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(267, 86);
             this.groupBox2.TabIndex = 2;
@@ -185,7 +190,7 @@
             this.groupBox3.Controls.Add(this.lb_tb_sub_deploy_folder);
             this.groupBox3.Controls.Add(this.tb_sub_backup_folder);
             this.groupBox3.Controls.Add(this.lb_tb_sub_backup_folder);
-            this.groupBox3.Location = new System.Drawing.Point(12, 185);
+            this.groupBox3.Location = new System.Drawing.Point(12, 246);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(267, 86);
             this.groupBox3.TabIndex = 3;
@@ -228,9 +233,12 @@
             // 
             // rtb_list_files
             // 
+            this.rtb_list_files.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_list_files.Location = new System.Drawing.Point(6, 51);
             this.rtb_list_files.Name = "rtb_list_files";
-            this.rtb_list_files.Size = new System.Drawing.Size(452, 142);
+            this.rtb_list_files.Size = new System.Drawing.Size(452, 184);
             this.rtb_list_files.TabIndex = 4;
             this.rtb_list_files.Text = "";
             this.rtb_list_files.WordWrap = false;
@@ -245,7 +253,7 @@
             this.groupBox4.Controls.Add(this.rtb_list_files);
             this.groupBox4.Location = new System.Drawing.Point(285, 33);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(464, 199);
+            this.groupBox4.Size = new System.Drawing.Size(464, 241);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
@@ -299,9 +307,9 @@
             // 
             // btn_Generate
             // 
-            this.btn_Generate.Location = new System.Drawing.Point(291, 238);
+            this.btn_Generate.Location = new System.Drawing.Point(285, 280);
             this.btn_Generate.Name = "btn_Generate";
-            this.btn_Generate.Size = new System.Drawing.Size(140, 33);
+            this.btn_Generate.Size = new System.Drawing.Size(140, 52);
             this.btn_Generate.TabIndex = 6;
             this.btn_Generate.Text = "Generate Executable Files";
             this.btn_Generate.UseVisualStyleBackColor = true;
@@ -309,9 +317,9 @@
             // 
             // btn_run_backup
             // 
-            this.btn_run_backup.Location = new System.Drawing.Point(439, 243);
+            this.btn_run_backup.Location = new System.Drawing.Point(432, 280);
             this.btn_run_backup.Name = "btn_run_backup";
-            this.btn_run_backup.Size = new System.Drawing.Size(95, 23);
+            this.btn_run_backup.Size = new System.Drawing.Size(152, 23);
             this.btn_run_backup.TabIndex = 8;
             this.btn_run_backup.Text = "1. Run Backup";
             this.btn_run_backup.UseVisualStyleBackColor = true;
@@ -319,21 +327,21 @@
             // 
             // btn_run_deploy
             // 
-            this.btn_run_deploy.Location = new System.Drawing.Point(546, 243);
+            this.btn_run_deploy.Location = new System.Drawing.Point(433, 309);
             this.btn_run_deploy.Name = "btn_run_deploy";
-            this.btn_run_deploy.Size = new System.Drawing.Size(95, 23);
+            this.btn_run_deploy.Size = new System.Drawing.Size(152, 23);
             this.btn_run_deploy.TabIndex = 4;
-            this.btn_run_deploy.Text = "2. Run Deploy";
+            this.btn_run_deploy.Text = "3. Run Deploy";
             this.btn_run_deploy.UseVisualStyleBackColor = true;
             this.btn_run_deploy.Click += new System.EventHandler(this.btn_run_deploy_Click);
             // 
             // btn_run_rollback
             // 
-            this.btn_run_rollback.Location = new System.Drawing.Point(653, 243);
+            this.btn_run_rollback.Location = new System.Drawing.Point(591, 309);
             this.btn_run_rollback.Name = "btn_run_rollback";
-            this.btn_run_rollback.Size = new System.Drawing.Size(95, 23);
+            this.btn_run_rollback.Size = new System.Drawing.Size(152, 23);
             this.btn_run_rollback.TabIndex = 9;
-            this.btn_run_rollback.Text = "3. Run Rollback";
+            this.btn_run_rollback.Text = "4. Run Rollback";
             this.btn_run_rollback.UseVisualStyleBackColor = true;
             this.btn_run_rollback.Click += new System.EventHandler(this.btn_run_rollback_Click);
             // 
@@ -399,7 +407,7 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.groupBox5);
-            this.panel1.Location = new System.Drawing.Point(0, 277);
+            this.panel1.Location = new System.Drawing.Point(0, 334);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 220);
             this.panel1.TabIndex = 11;
@@ -448,13 +456,57 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cb_deployment_path);
+            this.groupBox6.Controls.Add(this.btnBrowserDeployment);
+            this.groupBox6.Location = new System.Drawing.Point(12, 93);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(267, 55);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Deployment Resource Section";
+            // 
+            // cb_deployment_path
+            // 
+            this.cb_deployment_path.FormattingEnabled = true;
+            this.cb_deployment_path.Location = new System.Drawing.Point(95, 23);
+            this.cb_deployment_path.Name = "cb_deployment_path";
+            this.cb_deployment_path.Size = new System.Drawing.Size(162, 21);
+            this.cb_deployment_path.TabIndex = 1;
+            // 
+            // btnBrowserDeployment
+            // 
+            this.btnBrowserDeployment.AutoSize = true;
+            this.btnBrowserDeployment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowserDeployment.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnBrowserDeployment.Location = new System.Drawing.Point(6, 27);
+            this.btnBrowserDeployment.Name = "btnBrowserDeployment";
+            this.btnBrowserDeployment.Size = new System.Drawing.Size(78, 13);
+            this.btnBrowserDeployment.TabIndex = 0;
+            this.btnBrowserDeployment.Text = "Resource Path";
+            this.btnBrowserDeployment.Click += new System.EventHandler(this.btnBrowserDeployment_Click);
+            // 
+            // btn_run_pre_deploy
+            // 
+            this.btn_run_pre_deploy.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btn_run_pre_deploy.Location = new System.Drawing.Point(591, 280);
+            this.btn_run_pre_deploy.Name = "btn_run_pre_deploy";
+            this.btn_run_pre_deploy.Size = new System.Drawing.Size(152, 23);
+            this.btn_run_pre_deploy.TabIndex = 12;
+            this.btn_run_pre_deploy.Text = "2. Pre-Deployment Files";
+            this.btn_run_pre_deploy.UseVisualStyleBackColor = true;
+            this.btn_run_pre_deploy.Click += new System.EventHandler(this.btn_run_pre_deploy_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(766, 506);
+            this.ClientSize = new System.Drawing.Size(766, 580);
+            this.Controls.Add(this.btn_run_pre_deploy);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_run_rollback);
             this.Controls.Add(this.btn_run_deploy);
@@ -465,6 +517,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -484,6 +537,8 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,6 +584,10 @@
         private System.Windows.Forms.Button btnReadFolder;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox cb_deployment_path;
+        private System.Windows.Forms.Label btnBrowserDeployment;
+        private System.Windows.Forms.Button btn_run_pre_deploy;
     }
 }
 

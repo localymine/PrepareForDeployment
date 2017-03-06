@@ -7,20 +7,20 @@ c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\Prepar
 c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.frmMain.resources
 c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.exe
 c:\users\user1\documents\visual studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.pdb
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe.config
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.pdb
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.frmMain.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Properties.Resources.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csproj.GenerateResource.Cache
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.exe
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.pdb
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form2.resources
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form3.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form2.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.Form3.resources
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.exe.manifest
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PrepareForDeployment.application
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.exe.manifest
-C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.application
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PrepareForDeployment.csprojResolveAssemblyReference.cache
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PFD.exe.config
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PFD.exe.manifest
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PFD.application
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PFD.exe
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\bin\Debug\PFD.pdb
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PFD.exe.manifest
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PFD.application
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PFD.exe
+C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Debug\PFD.pdb

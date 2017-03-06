@@ -19,6 +19,7 @@ namespace PrepareForDeployment
         private string _strProductionPath;
         private string _strProductionFolder;
         private string _strBackupPath;
+        private string _strPreDeployPath;
         private string _strSubBackupPath;
         private string _strSubDeployPath;
         private string _strCurDate;
@@ -29,8 +30,8 @@ namespace PrepareForDeployment
         private string _strBackupBat;
         private string _strDeployBat;
         private string _strRollbackBat;
+        private string _strPreDeployBat;
         private string _strCbProductionPath; // save history of combobox to file
-        private bool _expand = false;
 
         public frmMain()
         {
@@ -45,6 +46,9 @@ namespace PrepareForDeployment
 
             // load history production path
             LoadDataToCombobox(Path.Combine(_strCbProductionPath, "pd.dat"), cb_production_path);
+
+            // load history deployment resource path
+            LoadDataToCombobox(Path.Combine(_strCbProductionPath, "dp.dat"), cb_deployment_path);
 
             // load history backup path
             LoadDataToCombobox(Path.Combine(_strCbProductionPath, "bk.dat"), cb_backup_path);
@@ -66,6 +70,9 @@ namespace PrepareForDeployment
                 // generate backup
                 Generate_Backup_File();
 
+                // generate pre-deploy
+                Generate_PreDeploy_File();
+
                 // generate deploy
                 Generate_Deploy_File();
 
@@ -74,6 +81,9 @@ namespace PrepareForDeployment
 
                 // save history production path
                 SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "pd.dat"), cb_production_path);
+
+                // save history deployment resource path
+                SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "dp.dat"), cb_deployment_path);
 
                 // save history backup path
                 SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "bk.dat"), cb_backup_path);
@@ -92,7 +102,8 @@ namespace PrepareForDeployment
             btn_run_backup.Enabled = flag;
             btn_run_deploy.Enabled = flag;
             btn_run_rollback.Enabled = flag;
-            btnOpen.Enabled = flag;
+            btn_run_pre_deploy.Enabled = flag;
+            // btnOpen.Enabled = flag;
             btnSave.Enabled = flag;
         }
 
@@ -108,6 +119,8 @@ namespace PrepareForDeployment
             _strProductionFolder = _strProductionPath.Split(new string[] { "\\" }, StringSplitOptions.None).Last();
             // get the backup path
             _strBackupPath = cb_backup_path.Text.TrimStart().TrimEnd();
+            // get the resource path (prepare for deployment)
+            _strPreDeployPath = cb_deployment_path.Text.TrimStart().TrimEnd();
             // make a path for backup and deploy
             _strSubBackupPath = Path.Combine(new string[] { _strBackupPath, _strCurDate, _strCurTime, _strBackupFolder, _strProductionFolder });
             _strSubDeployPath = Path.Combine(new string[] { _strBackupPath, _strCurDate, _strCurTime, _strDeployFolder, _strProductionFolder });
@@ -115,8 +128,9 @@ namespace PrepareForDeployment
             _strBackupPathCur = Path.Combine(new string[] { _strBackupPath, _strCurDate, _strCurTime });
 
             _strBackupBat = @Path.Combine(_strBackupPathCur, "1_Backup.bat");
-            _strDeployBat = @Path.Combine(_strBackupPathCur, "2_Deploy.bat");
-            _strRollbackBat = @Path.Combine(_strBackupPathCur, "3_Rollback.bat");
+            _strPreDeployBat = @Path.Combine(_strBackupPathCur, "2_PreDeploy.bat");
+            _strDeployBat = @Path.Combine(_strBackupPathCur, "3_Deploy.bat");
+            _strRollbackBat = @Path.Combine(_strBackupPathCur, "4_Rollback.bat");
 
             if (string.IsNullOrEmpty(cb_production_path.Text) || string.IsNullOrWhiteSpace(cb_production_path.Text))
             {
@@ -261,6 +275,7 @@ namespace PrepareForDeployment
                         }
                     }
                     //
+                    DeleteEmptyDirs(_strSubBackupPath);
                 }
             }
             catch(Exception ex)
@@ -357,6 +372,55 @@ namespace PrepareForDeployment
                 }
                 //
                 WriteLogExeBat("BACKUP");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Generate_PreDeploy_File()
+        {
+            try
+            {
+                if (File.Exists(_strPreDeployBat))
+                {
+                    File.Delete(_strPreDeployBat);
+                }
+                // create file
+                using (StreamWriter sw = File.AppendText(_strPreDeployBat))
+                {
+                    sw.WriteLine("@echo off");
+                    sw.WriteLine(":Syntax");
+                    sw.WriteLine("echo ------------------------------------");
+                    sw.WriteLine("echo Copy Files From The Resource (Current Changed)");
+                    sw.WriteLine("echo To Deploy Folder");
+                    sw.WriteLine("echo In Order To Prepare For Run Deployment");
+                    sw.WriteLine("echo ------------------------------------");
+                    sw.WriteLine(":End");
+                    sw.WriteLine(Environment.NewLine);
+                    foreach (string file in _arrListFiles)
+                    {
+                        string subResourceFilePath = Path.Combine(_strPreDeployPath, file);
+                        // copy resour -> deploy folder
+                        if (File.Exists(subResourceFilePath))
+                        {
+                            sw.WriteLine("copy " + subResourceFilePath + " " + Path.Combine(_strSubDeployPath, file));
+                        }
+                    }
+                    sw.WriteLine(Environment.NewLine);
+                    // log
+                    sw.WriteLine("@echo off");
+                    sw.WriteLine("(");
+                    sw.WriteLine("@echo Prepare Resource at %date% %time%");
+                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
+                    sw.WriteLine(") >> log.txt");
+                    sw.WriteLine(Environment.NewLine);
+                    //
+                    sw.WriteLine("pause");
+                }
+                //
+                WriteLogExeBat("PRE-DEPLOY");
             }
             catch (Exception ex)
             {
@@ -466,6 +530,13 @@ namespace PrepareForDeployment
                         sw.WriteLine("++--------------------------------------------------------------------------------++");
                     }
                     break;
+                case "PRE-DEPLOY":
+                    using (StreamWriter sw = File.AppendText(logFile))
+                    {
+                        sw.WriteLine("Prepare Resource at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
+                        sw.WriteLine("++--------------------------------------------------------------------------------++");
+                    }
+                    break;
             }
         }
 
@@ -475,7 +546,33 @@ namespace PrepareForDeployment
             {
                 if (File.Exists(_strBackupBat))
                 {
-                    System.Diagnostics.Process.Start(_strBackupBat);
+                    System.Diagnostics.Process myProcess = null;
+                    //
+                    try
+                    {
+                        // Start the process.
+                        myProcess = Process.Start(_strBackupBat);
+                        // Display the process statistics until
+                        // the user closes the program.
+                        do
+                        {
+                            if (!myProcess.HasExited)
+                            {
+                                // Refresh the current process property values.
+                                myProcess.Refresh();
+                            }
+                        }
+                        while (!myProcess.WaitForExit(5000));
+                    }
+                    finally
+                    {
+                        if (myProcess != null)
+                        {
+                            myProcess.Close();
+                        }
+                    }
+                    //
+                    DeleteEmptyDirs(_strSubBackupPath);
                     //
                     WriteLogExeBat("BACKUP");
                 }
@@ -663,6 +760,35 @@ namespace PrepareForDeployment
                 ParsePath(subdir);
         }
 
+        private void DeleteEmptyDirs(string startPath)
+        {
+            if (String.IsNullOrEmpty(startPath))
+                throw new ArgumentException(
+                    "Starting directory is a null reference or an empty string",
+                    "dir");
+
+            try
+            {
+                foreach (var d in Directory.EnumerateDirectories(startPath))
+                {
+                    DeleteEmptyDirs(d);
+                }
+
+                var entries = Directory.EnumerateFileSystemEntries(startPath);
+
+                if (!entries.Any())
+                {
+                    try
+                    {
+                        Directory.Delete(startPath);
+                    }
+                    catch (UnauthorizedAccessException) { }
+                    catch (DirectoryNotFoundException) { }
+                }
+            }
+            catch (UnauthorizedAccessException) { }
+        }
+
         private void btnReadFolder_Click(object sender, EventArgs e)
         {
             try
@@ -720,6 +846,69 @@ namespace PrepareForDeployment
         {
             Form3 frmDeployment = new Form3();
             frmDeployment.ShowDialog();
+        }
+
+        private void btnBrowserDeployment_Click(object sender, EventArgs e)
+        {
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = folderDialog.SelectedPath;
+                    cb_deployment_path.Text = selectedPath;
+                    cb_deployment_path.Items.AddRange(new object[] { selectedPath });
+                }
+            }
+        }
+
+        private void btn_run_pre_deploy_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists(_strPreDeployBat))
+                {
+                    if (MessageBox.Show("Do you want to prepare Source Code for Deployment?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process myProcess = null;
+                        //
+                        try
+                        {
+                            // Start the process.
+                            myProcess = Process.Start(_strPreDeployBat);
+                            // Display the process statistics until
+                            // the user closes the program.
+                            do
+                            {
+                                if (!myProcess.HasExited)
+                                {
+                                    // Refresh the current process property values.
+                                    myProcess.Refresh();
+                                }
+                            }
+                            while (!myProcess.WaitForExit(5000));
+                        }
+                        finally
+                        {
+                            if (myProcess != null)
+                            {
+                                myProcess.Close();
+                            }
+                        }
+                        //
+                        DeleteEmptyDirs(_strSubDeployPath);
+                        //
+                        WriteLogExeBat("PRE-DEPLOY");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File Not Found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
