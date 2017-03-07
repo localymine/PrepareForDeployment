@@ -1,11 +1,6 @@
-C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.exe.config
-C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.exe
-C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PrepareForDeployment.pdb
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.frmMain.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Properties.Resources.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csproj.GenerateResource.Cache
-C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.exe
-C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.pdb
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form2.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.Form3.resources
 C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PrepareForDeployment.csprojResolveAssemblyReference.cache
@@ -24,3 +19,12 @@ C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.application
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.exe
 C:\Users\Kantoh\workspace\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.pdb
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PFD.exe.config
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.exe
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.pdb
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PFD.exe.manifest
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PFD.application
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PFD.exe
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\bin\Release\PFD.pdb
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.exe.manifest
+C:\Users\user1\Documents\Visual Studio 2015\Projects\PrepareForDeployment\PrepareForDeployment\obj\Release\PFD.application

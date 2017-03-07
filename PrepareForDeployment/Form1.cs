@@ -70,9 +70,6 @@ namespace PrepareForDeployment
                 // generate backup
                 Generate_Backup_File();
 
-                // generate pre-deploy
-                Generate_PreDeploy_File();
-
                 // generate deploy
                 Generate_Deploy_File();
 
@@ -865,6 +862,15 @@ namespace PrepareForDeployment
         {
             try
             {
+                //
+                if (string.IsNullOrEmpty(cb_deployment_path.Text) || string.IsNullOrWhiteSpace(cb_deployment_path.Text))
+                {
+                    throw new System.ArgumentException(btnBrowserDeployment.Text + " is not empty");
+                }
+                //
+                // generate pre-deploy
+                Generate_PreDeploy_File();
+                //
                 if (File.Exists(_strPreDeployBat))
                 {
                     if (MessageBox.Show("Do you want to prepare Source Code for Deployment?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PFD.exe" size="986552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PFD.exe" size="989624">
       <assemblyIdentity name="PFD" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nWxoynPHnXeTQvZq2kwhxjMdDeu9AG3RnxaFc90uVZ4=</dsig:DigestValue>
+        <dsig:DigestValue>ViI6sZi6athvmxz+uxMzKijj3N3K0cX3V0cx2sMI8iY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
