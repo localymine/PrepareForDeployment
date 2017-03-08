@@ -905,8 +905,7 @@ namespace PrepareForDeployment
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         private void btn_clean_Click(object sender, EventArgs e)
         {
             string[] lstFilePath = Lines(rtb_list_files.Text);
@@ -914,9 +913,8 @@ namespace PrepareForDeployment
             //
             rtb_list_files.Clear();
             rtb_list_files.Text = string.Join(Environment.NewLine, lstFilePath);
-=======
-=======
->>>>>>> b2f073c... upgrade save combobox history by xml
+        }
+
         private void grResource_Paint(object sender, PaintEventArgs e)
         {
             Graphics gfx = e.Graphics;
@@ -969,10 +967,6 @@ namespace PrepareForDeployment
                 xmlWriter.WriteEndDocument();
                 xmlWriter.Close();
             }
-<<<<<<< HEAD
->>>>>>> feature/combobox_history
-=======
->>>>>>> b2f073c... upgrade save combobox history by xml
         }
     }
 }
