@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using System.Xml;
 
 namespace PrepareForDeployment
 {
@@ -31,7 +32,6 @@ namespace PrepareForDeployment
         private string _strDeployBat;
         private string _strRollbackBat;
         private string _strPreDeployBat;
-        private string _strCbProductionPath; // save history of combobox to file
 
         public frmMain()
         {
@@ -42,16 +42,10 @@ namespace PrepareForDeployment
 
             DisableEnableControl(false);
 
-            _strCbProductionPath = Directory.GetCurrentDirectory();
+            string appPlacingPath = Directory.GetCurrentDirectory();
 
-            // load history production path
-            LoadDataToCombobox(Path.Combine(_strCbProductionPath, "pd.dat"), cb_production_path);
-
-            // load history deployment resource path
-            LoadDataToCombobox(Path.Combine(_strCbProductionPath, "dp.dat"), cb_deployment_path);
-
-            // load history backup path
-            LoadDataToCombobox(Path.Combine(_strCbProductionPath, "bk.dat"), cb_backup_path);
+            // load history production deployment backup path
+            LoadDataToCombobox();
         }
 
         private void btn_Generate_Click(object sender, EventArgs e)
@@ -75,15 +69,6 @@ namespace PrepareForDeployment
 
                 // generate rollback
                 Generate_Rollback_File();
-
-                // save history production path
-                SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "pd.dat"), cb_production_path);
-
-                // save history deployment resource path
-                SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "dp.dat"), cb_deployment_path);
-
-                // save history backup path
-                SaveDataFromCombobox(Path.Combine(_strCbProductionPath, "bk.dat"), cb_backup_path);
 
                 // active button control
                 DisableEnableControl(true);
@@ -588,6 +573,11 @@ namespace PrepareForDeployment
         {
             try
             {
+                if (!File.Exists(_strPreDeployBat))
+                {
+                    throw new System.ArgumentException("Please Copy Resource Files to deploy Folder");
+                }
+                //
                 if (File.Exists(_strDeployBat))
                 {
                     if (MessageBox.Show("Do you really want to deploy The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -638,7 +628,7 @@ namespace PrepareForDeployment
             {
                 using (StreamWriter sw = File.CreateText(fileName))
                 {
-                    foreach(var item in cb.Items)
+                    foreach(object item in cb.Items)
                     {
                         sw.WriteLine(item);
                     }
@@ -650,31 +640,29 @@ namespace PrepareForDeployment
             }
         }
 
-        private void LoadDataToCombobox(string fileName, ComboBox cb)
+        private void LoadDataToCombobox()
         {
-            try
+            ComboBox[] cmbs = new ComboBox[] { cb_production_path, cb_backup_path, cb_deployment_path };
+            string[] attributeNames = new String[] { "production", "backup", "deployment" };
+            //
+            string appPlacingPath = Directory.GetCurrentDirectory();
+            string fileName = Path.Combine(appPlacingPath, "setting.xml");
+            //
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(fileName);
+            for(int i=0; i<attributeNames.Length; i++)
             {
-                using (StreamReader sd = File.OpenText(fileName))
+                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/setting/location[@name='" + attributeNames[i] + "']");
+                foreach (XmlNode node in nodeList)
                 {
-                    while (!sd.EndOfStream)
+                    XmlNodeList items = node.SelectNodes("item");
+                    foreach (XmlNode item in items)
                     {
-                        string itemRead = sd.ReadLine();
-                        cb.Items.Add(itemRead);
+                        cmbs[i].Items.Add(item.Attributes["path"].Value);
                     }
                 }
             }
-            catch (DirectoryNotFoundException dnf)
-            {
-                // Exception Processing
-            }
-            catch (FileNotFoundException fnf)
-            {
-                // Exception Processing
-            }
-            catch (Exception e)
-            {
-                // Exception Processing
-            }
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -917,6 +905,7 @@ namespace PrepareForDeployment
             }
         }
 
+<<<<<<< HEAD
         private void btn_clean_Click(object sender, EventArgs e)
         {
             string[] lstFilePath = Lines(rtb_list_files.Text);
@@ -924,6 +913,60 @@ namespace PrepareForDeployment
             //
             rtb_list_files.Clear();
             rtb_list_files.Text = string.Join(Environment.NewLine, lstFilePath);
+=======
+        private void grResource_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics gfx = e.Graphics;
+            Pen p = new Pen(Color.DodgerBlue, 1);
+            gfx.DrawLine(p, 0, 6, 0, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, 0, 6, 5, 6);
+            gfx.DrawLine(p, 155, 6, e.ClipRectangle.Width - 2, 6);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, 6, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2, 0, e.ClipRectangle.Height - 2);
+        }
+
+        private string[] ConvertCmb2Arr(ComboBox cb)
+        {
+            string[] strArr = new string[cb.Items.Count];
+            for(int i=0; i<cb.Items.Count; i++)
+            {
+                strArr[i] = cb.Items[i].ToString();
+            }
+            return strArr.Distinct().ToArray();
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing || e.CloseReason == CloseReason.ApplicationExitCall)
+            {
+                ComboBox[] cmbs = new ComboBox[] { cb_production_path, cb_backup_path, cb_deployment_path };
+                string[] attributeNames = new String[] { "production", "backup", "deployment" };
+                string[] comboboxLst;
+                string appPlacingPath = Directory.GetCurrentDirectory();
+                XmlWriter xmlWriter = XmlWriter.Create(Path.Combine(appPlacingPath, "setting.xml"));
+
+                xmlWriter.WriteStartDocument();
+                xmlWriter.WriteStartElement("setting");
+
+                for (int i=0; i< attributeNames.Length; i++)
+                {
+                    // prodcution path // backup path // deployment path
+                    xmlWriter.WriteStartElement("location");
+                    xmlWriter.WriteAttributeString("name", attributeNames[i]);
+                    comboboxLst = ConvertCmb2Arr(cmbs[i]);
+                    foreach (string path in comboboxLst)
+                    {
+                        xmlWriter.WriteStartElement("item");
+                        xmlWriter.WriteAttributeString("path", path);
+                        xmlWriter.WriteEndElement();
+                    }
+                    xmlWriter.WriteEndElement();
+                }
+
+                xmlWriter.WriteEndDocument();
+                xmlWriter.Close();
+            }
+>>>>>>> feature/combobox_history
         }
     }
 }
