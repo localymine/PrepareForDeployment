@@ -46,6 +46,7 @@
             this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_clean = new System.Windows.Forms.Button();
             this.btnReadFolder = new System.Windows.Forms.Button();
             this.btn_replace = new System.Windows.Forms.Button();
             this.tb_text2 = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.btn_run_rollback = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCreateReleaseNote = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeploymentFlow = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +71,8 @@
             this.cb_deployment_path = new System.Windows.Forms.ComboBox();
             this.btnBrowserDeployment = new System.Windows.Forms.Label();
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
-            this.btn_clean = new System.Windows.Forms.Button();
+            this.btn_collapse = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -237,7 +238,8 @@
             this.rtb_list_files.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_list_files.BackColor = System.Drawing.SystemColors.Window;
+            this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtb_list_files.Location = new System.Drawing.Point(6, 51);
             this.rtb_list_files.Name = "rtb_list_files";
             this.rtb_list_files.Size = new System.Drawing.Size(452, 184);
@@ -260,6 +262,17 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
+            // 
+            // btn_clean
+            // 
+            this.btn_clean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clean.Image = ((System.Drawing.Image)(resources.GetObject("btn_clean.Image")));
+            this.btn_clean.Location = new System.Drawing.Point(426, 21);
+            this.btn_clean.Name = "btn_clean";
+            this.btn_clean.Size = new System.Drawing.Size(30, 23);
+            this.btn_clean.TabIndex = 10;
+            this.btn_clean.UseVisualStyleBackColor = true;
+            this.btn_clean.Click += new System.EventHandler(this.btn_clean_Click);
             // 
             // btnReadFolder
             // 
@@ -362,23 +375,15 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCreateReleaseNote,
             this.btnExitMenu});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // btnCreateReleaseNote
-            // 
-            this.btnCreateReleaseNote.Name = "btnCreateReleaseNote";
-            this.btnCreateReleaseNote.Size = new System.Drawing.Size(157, 22);
-            this.btnCreateReleaseNote.Text = "&Release Note ▼";
-            this.btnCreateReleaseNote.Click += new System.EventHandler(this.btnCreateReleaseNote_Click);
-            // 
             // btnExitMenu
             // 
             this.btnExitMenu.Name = "btnExitMenu";
-            this.btnExitMenu.Size = new System.Drawing.Size(157, 22);
+            this.btnExitMenu.Size = new System.Drawing.Size(155, 22);
             this.btnExitMenu.Text = "E&xit";
             this.btnExitMenu.Click += new System.EventHandler(this.btnExitMenu_Click);
             // 
@@ -410,7 +415,7 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.groupBox5);
-            this.panel1.Location = new System.Drawing.Point(0, 334);
+            this.panel1.Location = new System.Drawing.Point(0, 339);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 220);
             this.panel1.TabIndex = 11;
@@ -442,6 +447,8 @@
             // 
             this.rtb_release_note.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_release_note.BackColor = System.Drawing.SystemColors.Window;
+            this.rtb_release_note.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
             this.rtb_release_note.Name = "rtb_release_note";
             this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
@@ -503,16 +510,26 @@
             this.btn_run_pre_deploy.UseVisualStyleBackColor = true;
             this.btn_run_pre_deploy.Click += new System.EventHandler(this.btn_run_pre_deploy_Click);
             // 
-            // btn_clean
+            // btn_collapse
             // 
-            this.btn_clean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_clean.Image = ((System.Drawing.Image)(resources.GetObject("btn_clean.Image")));
-            this.btn_clean.Location = new System.Drawing.Point(426, 21);
-            this.btn_clean.Name = "btn_clean";
-            this.btn_clean.Size = new System.Drawing.Size(30, 23);
-            this.btn_clean.TabIndex = 10;
-            this.btn_clean.UseVisualStyleBackColor = true;
-            this.btn_clean.Click += new System.EventHandler(this.btn_clean_Click);
+            this.btn_collapse.AutoSize = true;
+            this.btn_collapse.BackColor = System.Drawing.Color.Transparent;
+            this.btn_collapse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_collapse.Location = new System.Drawing.Point(9, 335);
+            this.btn_collapse.Name = "btn_collapse";
+            this.btn_collapse.Size = new System.Drawing.Size(19, 13);
+            this.btn_collapse.TabIndex = 13;
+            this.btn_collapse.Text = "▼";
+            this.btn_collapse.Click += new System.EventHandler(this.btn_collapse_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 331);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(724, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // frmMain
             // 
@@ -521,6 +538,8 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(766, 580);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btn_collapse);
             this.Controls.Add(this.btn_run_pre_deploy);
             this.Controls.Add(this.grResource);
             this.Controls.Add(this.panel1);
@@ -590,7 +609,6 @@
         private System.Windows.Forms.TextBox tb_text1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnCreateReleaseNote;
         private System.Windows.Forms.ToolStripMenuItem btnExitMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuDeploymentFlow;
@@ -606,6 +624,8 @@
         private System.Windows.Forms.Label btnBrowserDeployment;
         private System.Windows.Forms.Button btn_run_pre_deploy;
         private System.Windows.Forms.Button btn_clean;
+        private System.Windows.Forms.Label btn_collapse;
+        private System.Windows.Forms.Label label2;
     }
 }
 

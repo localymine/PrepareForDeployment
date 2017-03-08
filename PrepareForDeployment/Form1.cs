@@ -678,29 +678,6 @@ namespace PrepareForDeployment
             panel1.Visible = false;
         }
 
-        private void btnCreateReleaseNote_Click(object sender, EventArgs e)
-        {
-            string value = btnCreateReleaseNote.Text;
-            switch (value)
-            {
-                case "Release Note ▼":
-                    btnCreateReleaseNote.Text = "Release Note ▲";
-                    break;
-                case "Release Note ▲":
-                    btnCreateReleaseNote.Text = "Release Note ▼";
-                    break;
-            }
-            //
-            if (panel1.Visible == false)
-            {
-                panel1.Visible = true;
-            }
-            else
-            {
-                panel1.Visible = false;
-            }
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -974,6 +951,29 @@ namespace PrepareForDeployment
 
                 xmlWriter.WriteEndDocument();
                 xmlWriter.Close();
+            }
+        }
+
+        private void btn_collapse_Click(object sender, EventArgs e)
+        {
+            string value = btn_collapse.Text;
+            switch (value)
+            {
+                case "▼":
+                    btn_collapse.Text = "▲";
+                    break;
+                case "▲":
+                    btn_collapse.Text = "▼";
+                    break;
+            }
+            //
+            if (panel1.Visible == false)
+            {
+                panel1.Visible = true;
+            }
+            else
+            {
+                panel1.Visible = false;
             }
         }
     }
