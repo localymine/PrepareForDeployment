@@ -642,27 +642,35 @@ namespace PrepareForDeployment
 
         private void LoadDataToCombobox()
         {
-            ComboBox[] cmbs = new ComboBox[] { cb_production_path, cb_backup_path, cb_deployment_path };
-            string[] attributeNames = new String[] { "production", "backup", "deployment" };
-            //
-            string appPlacingPath = Directory.GetCurrentDirectory();
-            string fileName = Path.Combine(appPlacingPath, "setting.xml");
-            //
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(fileName);
-            for(int i=0; i<attributeNames.Length; i++)
+            try
             {
-                XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/setting/location[@name='" + attributeNames[i] + "']");
-                foreach (XmlNode node in nodeList)
+                ComboBox[] cmbs = new ComboBox[] { cb_production_path, cb_backup_path, cb_deployment_path };
+                string[] attributeNames = new String[] { "production", "backup", "deployment" };
+                //
+                string appPlacingPath = Directory.GetCurrentDirectory();
+                string fileName = Path.Combine(appPlacingPath, "setting.xml");
+                if (!File.Exists(fileName))
                 {
-                    XmlNodeList items = node.SelectNodes("item");
-                    foreach (XmlNode item in items)
+                    return;
+                }
+                //
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(fileName);
+                for (int i = 0; i < attributeNames.Length; i++)
+                {
+                    XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/setting/location[@name='" + attributeNames[i] + "']");
+                    foreach (XmlNode node in nodeList)
                     {
-                        cmbs[i].Items.Add(item.Attributes["path"].Value);
+                        XmlNodeList items = node.SelectNodes("item");
+                        foreach (XmlNode item in items)
+                        {
+                            cmbs[i].Items.Add(item.Attributes["path"].Value);
+                        }
                     }
                 }
             }
-            
+            catch (Exception ex) {
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
