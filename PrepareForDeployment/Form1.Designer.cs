@@ -71,6 +71,7 @@
             this.cb_deployment_path = new System.Windows.Forms.ComboBox();
             this.btnBrowserDeployment = new System.Windows.Forms.Label();
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
+            this.btn_clean = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -245,6 +246,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btn_clean);
             this.groupBox4.Controls.Add(this.btnReadFolder);
             this.groupBox4.Controls.Add(this.btn_replace);
             this.groupBox4.Controls.Add(this.tb_text2);
@@ -272,7 +274,7 @@
             // 
             this.btn_replace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_replace.Image = ((System.Drawing.Image)(resources.GetObject("btn_replace.Image")));
-            this.btn_replace.Location = new System.Drawing.Point(428, 21);
+            this.btn_replace.Location = new System.Drawing.Point(390, 21);
             this.btn_replace.Name = "btn_replace";
             this.btn_replace.Size = new System.Drawing.Size(30, 23);
             this.btn_replace.TabIndex = 8;
@@ -282,7 +284,7 @@
             // tb_text2
             // 
             this.tb_text2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_text2.Location = new System.Drawing.Point(322, 22);
+            this.tb_text2.Location = new System.Drawing.Point(284, 22);
             this.tb_text2.Name = "tb_text2";
             this.tb_text2.Size = new System.Drawing.Size(100, 20);
             this.tb_text2.TabIndex = 7;
@@ -290,7 +292,7 @@
             // tb_text1
             // 
             this.tb_text1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_text1.Location = new System.Drawing.Point(216, 22);
+            this.tb_text1.Location = new System.Drawing.Point(178, 22);
             this.tb_text1.Name = "tb_text1";
             this.tb_text1.Size = new System.Drawing.Size(100, 20);
             this.tb_text1.TabIndex = 6;
@@ -368,14 +370,14 @@
             // btnCreateReleaseNote
             // 
             this.btnCreateReleaseNote.Name = "btnCreateReleaseNote";
-            this.btnCreateReleaseNote.Size = new System.Drawing.Size(155, 22);
+            this.btnCreateReleaseNote.Size = new System.Drawing.Size(157, 22);
             this.btnCreateReleaseNote.Text = "&Release Note ▼";
             this.btnCreateReleaseNote.Click += new System.EventHandler(this.btnCreateReleaseNote_Click);
             // 
             // btnExitMenu
             // 
             this.btnExitMenu.Name = "btnExitMenu";
-            this.btnExitMenu.Size = new System.Drawing.Size(155, 22);
+            this.btnExitMenu.Size = new System.Drawing.Size(157, 22);
             this.btnExitMenu.Text = "E&xit";
             this.btnExitMenu.Click += new System.EventHandler(this.btnExitMenu_Click);
             // 
@@ -498,6 +500,17 @@
             this.btn_run_pre_deploy.UseVisualStyleBackColor = true;
             this.btn_run_pre_deploy.Click += new System.EventHandler(this.btn_run_pre_deploy_Click);
             // 
+            // btn_clean
+            // 
+            this.btn_clean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clean.Image = ((System.Drawing.Image)(resources.GetObject("btn_clean.Image")));
+            this.btn_clean.Location = new System.Drawing.Point(426, 21);
+            this.btn_clean.Name = "btn_clean";
+            this.btn_clean.Size = new System.Drawing.Size(30, 23);
+            this.btn_clean.TabIndex = 10;
+            this.btn_clean.UseVisualStyleBackColor = true;
+            this.btn_clean.Click += new System.EventHandler(this.btn_clean_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,6 +601,7 @@
         private System.Windows.Forms.ComboBox cb_deployment_path;
         private System.Windows.Forms.Label btnBrowserDeployment;
         private System.Windows.Forms.Button btn_run_pre_deploy;
+        private System.Windows.Forms.Button btn_clean;
     }
 }
 

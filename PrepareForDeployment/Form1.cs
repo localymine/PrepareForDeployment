@@ -916,5 +916,14 @@ namespace PrepareForDeployment
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btn_clean_Click(object sender, EventArgs e)
+        {
+            string[] lstFilePath = Lines(rtb_list_files.Text);
+            Array.Sort(lstFilePath, StringComparer.InvariantCulture);
+            //
+            rtb_list_files.Clear();
+            rtb_list_files.Text = string.Join(Environment.NewLine, lstFilePath);
+        }
     }
 }
