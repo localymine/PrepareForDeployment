@@ -67,7 +67,7 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.rtb_release_note = new System.Windows.Forms.RichTextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.grResource = new System.Windows.Forms.GroupBox();
             this.cb_deployment_path = new System.Windows.Forms.ComboBox();
             this.btnBrowserDeployment = new System.Windows.Forms.Label();
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
@@ -79,7 +79,7 @@
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.grResource.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -237,6 +237,7 @@
             this.rtb_list_files.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_list_files.Location = new System.Drawing.Point(6, 51);
             this.rtb_list_files.Name = "rtb_list_files";
             this.rtb_list_files.Size = new System.Drawing.Size(452, 184);
@@ -458,16 +459,18 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // groupBox6
+            // grResource
             // 
-            this.groupBox6.Controls.Add(this.cb_deployment_path);
-            this.groupBox6.Controls.Add(this.btnBrowserDeployment);
-            this.groupBox6.Location = new System.Drawing.Point(12, 93);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(267, 55);
-            this.groupBox6.TabIndex = 2;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Deployment Resource Section";
+            this.grResource.Controls.Add(this.cb_deployment_path);
+            this.grResource.Controls.Add(this.btnBrowserDeployment);
+            this.grResource.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grResource.Location = new System.Drawing.Point(12, 93);
+            this.grResource.Name = "grResource";
+            this.grResource.Size = new System.Drawing.Size(267, 55);
+            this.grResource.TabIndex = 2;
+            this.grResource.TabStop = false;
+            this.grResource.Text = "Deployment Resource Section";
+            this.grResource.Paint += new System.Windows.Forms.PaintEventHandler(this.grResource_Paint);
             // 
             // cb_deployment_path
             // 
@@ -496,7 +499,7 @@
             this.btn_run_pre_deploy.Name = "btn_run_pre_deploy";
             this.btn_run_pre_deploy.Size = new System.Drawing.Size(152, 23);
             this.btn_run_pre_deploy.TabIndex = 12;
-            this.btn_run_pre_deploy.Text = "2. Pre-Deployment Files";
+            this.btn_run_pre_deploy.Text = "2. Pre-Deployment";
             this.btn_run_pre_deploy.UseVisualStyleBackColor = true;
             this.btn_run_pre_deploy.Click += new System.EventHandler(this.btn_run_pre_deploy_Click);
             // 
@@ -519,7 +522,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(766, 580);
             this.Controls.Add(this.btn_run_pre_deploy);
-            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.grResource);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_run_rollback);
             this.Controls.Add(this.btn_run_deploy);
@@ -537,6 +540,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prepare For Deployment";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -550,8 +554,8 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.grResource.ResumeLayout(false);
+            this.grResource.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,7 +601,7 @@
         private System.Windows.Forms.Button btnReadFolder;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox grResource;
         private System.Windows.Forms.ComboBox cb_deployment_path;
         private System.Windows.Forms.Label btnBrowserDeployment;
         private System.Windows.Forms.Button btn_run_pre_deploy;

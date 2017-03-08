@@ -99,7 +99,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(287, 17);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "Version 1.0";
+            this.labelVersion.Text = "Version 1.1";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCopyright
@@ -142,7 +142,8 @@
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Application will support the deployment become eaiser.\r\nGenerate the executable b" +
-    "atch file\r\nIn order to process \r\n   1. Backup\r\n   2. Deploy\r\n   3. Rollback";
+    "atch file\r\nIn order to process \r\n   1. Backup\r\n   2. Pre-Deploy\r\n   3. Deploy\r\n " +
+    "  4. Rollback";
             // 
             // Form2
             // 
