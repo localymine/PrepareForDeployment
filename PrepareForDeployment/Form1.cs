@@ -1,15 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Globalization;
 using System.Xml;
 
 namespace PrepareForDeployment
@@ -157,18 +152,28 @@ namespace PrepareForDeployment
             Directory.CreateDirectory(pathString);
         }
 
+        public string[] StripSlash(string[] lines)
+        {
+            List<string> lineList = new List<string>();
+            foreach (string line in lines)
+            {
+                string filePath = RemoveDriveOrNetworkShare(line).Replace("/", "\\");
+                if (filePath.TrimStart(' ').StartsWith("\\"))
+                {
+                    lineList.Add(filePath.TrimStart(' ', '\\'));
+                }
+                else
+                {
+                    lineList.Add(filePath.TrimStart(' '));
+                }
+            }
+            return lineList.ToArray();
+        }
+
         private void MkdirProjectFolder()
         {
-            string[] listFiles = Lines(rtb_list_files.Text);
-            List<string> tempList = new List<string>();
-            // prepare a clean path+file for backup
-            foreach (string item in listFiles)
-            {
-                string t = RemoveDriveOrNetworkShare(item).Replace("/", "\\");
-                tempList.Add(t);
-            }
-            //
-            _arrListFiles = tempList.ToArray();
+            // prepare list file path
+            _arrListFiles = StripSlash(Lines(rtb_list_files.Text));
             //
             List<string> tPaths = new List<string>();
             foreach(string filePath in _arrListFiles)
@@ -897,7 +902,13 @@ namespace PrepareForDeployment
             Array.Sort(lstFilePath, StringComparer.InvariantCulture);
             //
             rtb_list_files.Clear();
-            rtb_list_files.Text = string.Join(Environment.NewLine, lstFilePath);
+            //
+            List<string> lineLst = new List<string>();
+            foreach(string filePath in lstFilePath)
+            {
+                lineLst.Add(filePath.TrimStart(' ', '\\'));
+            }
+            rtb_list_files.Text = string.Join(Environment.NewLine, lineLst.ToArray()).TrimStart(' ', '\\');
         }
 
         private void grResource_Paint(object sender, PaintEventArgs e)
