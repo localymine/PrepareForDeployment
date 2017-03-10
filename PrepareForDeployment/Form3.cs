@@ -12,6 +12,10 @@ namespace PrepareForDeployment
 {
     public partial class Form3 : Form
     {
+        private int _xPos;
+        private int _yPos;
+        private bool _dragging;
+
         public Form3()
         {
             InitializeComponent();
@@ -56,6 +60,29 @@ namespace PrepareForDeployment
             pictureBox.Width += widthZoom;
             pictureBox.Height += heightZoom;
 
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            var c = sender as PictureBox;
+            if (null == c) return;
+            _dragging = false;
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            _dragging = true;
+            _xPos = e.X;
+            _yPos = e.Y;
+        }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            var c = sender as PictureBox;
+            if (!_dragging || null == c) return;
+            c.Top = e.Y + c.Top - _yPos;
+            c.Left = e.X + c.Left - _xPos;
         }
     }
 }
