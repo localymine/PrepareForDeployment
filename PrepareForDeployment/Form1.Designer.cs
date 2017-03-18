@@ -46,6 +46,7 @@
             this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkUnicode = new System.Windows.Forms.CheckBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.btnReadFolder = new System.Windows.Forms.Button();
             this.btn_replace = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
             this.btn_run_rollback = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMerge = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeploymentFlow = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +103,7 @@
             this.cb_production_path.Name = "cb_production_path";
             this.cb_production_path.Size = new System.Drawing.Size(162, 21);
             this.cb_production_path.TabIndex = 1;
+            this.cb_production_path.Leave += new System.EventHandler(this.cb_production_path_Leave);
             // 
             // btnBrowserProduction
             // 
@@ -137,7 +140,7 @@
             this.dtpk_cur_time.Name = "dtpk_cur_time";
             this.dtpk_cur_time.ShowUpDown = true;
             this.dtpk_cur_time.Size = new System.Drawing.Size(70, 20);
-            this.dtpk_cur_time.TabIndex = 7;
+            this.dtpk_cur_time.TabIndex = 5;
             // 
             // label5
             // 
@@ -155,7 +158,7 @@
             this.dtpk_cur_date.Location = new System.Drawing.Point(42, 52);
             this.dtpk_cur_date.Name = "dtpk_cur_date";
             this.dtpk_cur_date.Size = new System.Drawing.Size(75, 20);
-            this.dtpk_cur_date.TabIndex = 5;
+            this.dtpk_cur_date.TabIndex = 4;
             // 
             // label4
             // 
@@ -172,7 +175,8 @@
             this.cb_backup_path.Location = new System.Drawing.Point(95, 23);
             this.cb_backup_path.Name = "cb_backup_path";
             this.cb_backup_path.Size = new System.Drawing.Size(163, 21);
-            this.cb_backup_path.TabIndex = 1;
+            this.cb_backup_path.TabIndex = 3;
+            this.cb_backup_path.Leave += new System.EventHandler(this.cb_backup_path_Leave);
             // 
             // btnBrowserBackup
             // 
@@ -204,7 +208,7 @@
             this.tb_sub_deploy_folder.Location = new System.Drawing.Point(142, 49);
             this.tb_sub_deploy_folder.Name = "tb_sub_deploy_folder";
             this.tb_sub_deploy_folder.Size = new System.Drawing.Size(116, 20);
-            this.tb_sub_deploy_folder.TabIndex = 3;
+            this.tb_sub_deploy_folder.TabIndex = 7;
             this.tb_sub_deploy_folder.Text = "deploy";
             // 
             // lb_tb_sub_deploy_folder
@@ -221,7 +225,7 @@
             this.tb_sub_backup_folder.Location = new System.Drawing.Point(142, 23);
             this.tb_sub_backup_folder.Name = "tb_sub_backup_folder";
             this.tb_sub_backup_folder.Size = new System.Drawing.Size(116, 20);
-            this.tb_sub_backup_folder.TabIndex = 1;
+            this.tb_sub_backup_folder.TabIndex = 6;
             this.tb_sub_backup_folder.Text = "bk";
             // 
             // lb_tb_sub_backup_folder
@@ -240,15 +244,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_list_files.BackColor = System.Drawing.SystemColors.Window;
             this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtb_list_files.Location = new System.Drawing.Point(6, 51);
+            this.rtb_list_files.Location = new System.Drawing.Point(6, 50);
             this.rtb_list_files.Name = "rtb_list_files";
-            this.rtb_list_files.Size = new System.Drawing.Size(452, 184);
-            this.rtb_list_files.TabIndex = 4;
+            this.rtb_list_files.Size = new System.Drawing.Size(452, 185);
+            this.rtb_list_files.TabIndex = 15;
             this.rtb_list_files.Text = "";
             this.rtb_list_files.WordWrap = false;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.chkUnicode);
             this.groupBox4.Controls.Add(this.btn_clean);
             this.groupBox4.Controls.Add(this.btnReadFolder);
             this.groupBox4.Controls.Add(this.btn_replace);
@@ -263,24 +268,36 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
             // 
+            // chkUnicode
+            // 
+            this.chkUnicode.AutoSize = true;
+            this.chkUnicode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkUnicode.Location = new System.Drawing.Point(68, 23);
+            this.chkUnicode.Name = "chkUnicode";
+            this.chkUnicode.Size = new System.Drawing.Size(85, 17);
+            this.chkUnicode.TabIndex = 10;
+            this.chkUnicode.Text = "Use Unicode";
+            this.chkUnicode.UseVisualStyleBackColor = true;
+            // 
             // btn_clean
             // 
             this.btn_clean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_clean.Image = ((System.Drawing.Image)(resources.GetObject("btn_clean.Image")));
-            this.btn_clean.Location = new System.Drawing.Point(426, 21);
+            this.btn_clean.Location = new System.Drawing.Point(433, 19);
             this.btn_clean.Name = "btn_clean";
-            this.btn_clean.Size = new System.Drawing.Size(30, 23);
-            this.btn_clean.TabIndex = 10;
+            this.btn_clean.Size = new System.Drawing.Size(25, 25);
+            this.btn_clean.TabIndex = 14;
             this.btn_clean.UseVisualStyleBackColor = true;
             this.btn_clean.Click += new System.EventHandler(this.btn_clean_Click);
             // 
             // btnReadFolder
             // 
-            this.btnReadFolder.Location = new System.Drawing.Point(83, 22);
+            this.btnReadFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReadFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnReadFolder.Image")));
+            this.btnReadFolder.Location = new System.Drawing.Point(37, 19);
             this.btnReadFolder.Name = "btnReadFolder";
-            this.btnReadFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnReadFolder.Size = new System.Drawing.Size(25, 25);
             this.btnReadFolder.TabIndex = 9;
-            this.btnReadFolder.Text = "Read Folder";
             this.btnReadFolder.UseVisualStyleBackColor = true;
             this.btnReadFolder.Click += new System.EventHandler(this.btnReadFolder_Click);
             // 
@@ -288,46 +305,47 @@
             // 
             this.btn_replace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_replace.Image = ((System.Drawing.Image)(resources.GetObject("btn_replace.Image")));
-            this.btn_replace.Location = new System.Drawing.Point(390, 21);
+            this.btn_replace.Location = new System.Drawing.Point(402, 19);
             this.btn_replace.Name = "btn_replace";
-            this.btn_replace.Size = new System.Drawing.Size(30, 23);
-            this.btn_replace.TabIndex = 8;
+            this.btn_replace.Size = new System.Drawing.Size(25, 25);
+            this.btn_replace.TabIndex = 13;
             this.btn_replace.UseVisualStyleBackColor = true;
             this.btn_replace.Click += new System.EventHandler(this.btn_replace_Click);
             // 
             // tb_text2
             // 
             this.tb_text2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_text2.Location = new System.Drawing.Point(284, 22);
+            this.tb_text2.Location = new System.Drawing.Point(278, 21);
             this.tb_text2.Name = "tb_text2";
-            this.tb_text2.Size = new System.Drawing.Size(100, 20);
-            this.tb_text2.TabIndex = 7;
+            this.tb_text2.Size = new System.Drawing.Size(119, 20);
+            this.tb_text2.TabIndex = 12;
             // 
             // tb_text1
             // 
             this.tb_text1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_text1.Location = new System.Drawing.Point(178, 22);
+            this.tb_text1.Location = new System.Drawing.Point(153, 21);
             this.tb_text1.Name = "tb_text1";
-            this.tb_text1.Size = new System.Drawing.Size(100, 20);
-            this.tb_text1.TabIndex = 6;
+            this.tb_text1.Size = new System.Drawing.Size(119, 20);
+            this.tb_text1.TabIndex = 11;
             // 
             // btnLoadFile
             // 
-            this.btnLoadFile.Location = new System.Drawing.Point(6, 22);
+            this.btnLoadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadFile.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadFile.Image")));
+            this.btnLoadFile.Location = new System.Drawing.Point(6, 19);
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadFile.TabIndex = 5;
-            this.btnLoadFile.Text = "Load File";
+            this.btnLoadFile.Size = new System.Drawing.Size(25, 25);
+            this.btnLoadFile.TabIndex = 8;
             this.btnLoadFile.UseVisualStyleBackColor = true;
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
             // btn_Generate
             // 
+            this.btn_Generate.Image = ((System.Drawing.Image)(resources.GetObject("btn_Generate.Image")));
             this.btn_Generate.Location = new System.Drawing.Point(285, 280);
             this.btn_Generate.Name = "btn_Generate";
             this.btn_Generate.Size = new System.Drawing.Size(140, 52);
-            this.btn_Generate.TabIndex = 6;
-            this.btn_Generate.Text = "Generate Executable Files";
+            this.btn_Generate.TabIndex = 16;
             this.btn_Generate.UseVisualStyleBackColor = true;
             this.btn_Generate.Click += new System.EventHandler(this.btn_Generate_Click);
             // 
@@ -336,7 +354,7 @@
             this.btn_run_backup.Location = new System.Drawing.Point(432, 280);
             this.btn_run_backup.Name = "btn_run_backup";
             this.btn_run_backup.Size = new System.Drawing.Size(152, 23);
-            this.btn_run_backup.TabIndex = 8;
+            this.btn_run_backup.TabIndex = 17;
             this.btn_run_backup.Text = "1. Run Backup";
             this.btn_run_backup.UseVisualStyleBackColor = true;
             this.btn_run_backup.Click += new System.EventHandler(this.btn_run_backup_Click);
@@ -346,7 +364,7 @@
             this.btn_run_deploy.Location = new System.Drawing.Point(433, 309);
             this.btn_run_deploy.Name = "btn_run_deploy";
             this.btn_run_deploy.Size = new System.Drawing.Size(152, 23);
-            this.btn_run_deploy.TabIndex = 4;
+            this.btn_run_deploy.TabIndex = 19;
             this.btn_run_deploy.Text = "3. Run Deploy";
             this.btn_run_deploy.UseVisualStyleBackColor = true;
             this.btn_run_deploy.Click += new System.EventHandler(this.btn_run_deploy_Click);
@@ -356,7 +374,7 @@
             this.btn_run_rollback.Location = new System.Drawing.Point(591, 309);
             this.btn_run_rollback.Name = "btn_run_rollback";
             this.btn_run_rollback.Size = new System.Drawing.Size(152, 23);
-            this.btn_run_rollback.TabIndex = 9;
+            this.btn_run_rollback.TabIndex = 20;
             this.btn_run_rollback.Text = "4. Run Rollback";
             this.btn_run_rollback.UseVisualStyleBackColor = true;
             this.btn_run_rollback.Click += new System.EventHandler(this.btn_run_rollback_Click);
@@ -375,15 +393,23 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMerge,
             this.btnExitMenu});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // btnMerge
+            // 
+            this.btnMerge.Name = "btnMerge";
+            this.btnMerge.Size = new System.Drawing.Size(117, 22);
+            this.btnMerge.Text = "&Merge...";
+            this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
+            // 
             // btnExitMenu
             // 
             this.btnExitMenu.Name = "btnExitMenu";
-            this.btnExitMenu.Size = new System.Drawing.Size(155, 22);
+            this.btnExitMenu.Size = new System.Drawing.Size(117, 22);
             this.btnExitMenu.Text = "E&xit";
             this.btnExitMenu.Click += new System.EventHandler(this.btnExitMenu_Click);
             // 
@@ -435,11 +461,11 @@
             // btnOpen
             // 
             this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
             this.btnOpen.Location = new System.Drawing.Point(650, 19);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(75, 23);
-            this.btnOpen.TabIndex = 3;
-            this.btnOpen.Text = "Open";
+            this.btnOpen.Size = new System.Drawing.Size(75, 25);
+            this.btnOpen.TabIndex = 22;
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
@@ -452,17 +478,17 @@
             this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
             this.rtb_release_note.Name = "rtb_release_note";
             this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
-            this.rtb_release_note.TabIndex = 1;
+            this.rtb_release_note.TabIndex = 21;
             this.rtb_release_note.Text = "";
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.Location = new System.Drawing.Point(650, 48);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
+            this.btnSave.Size = new System.Drawing.Size(75, 25);
+            this.btnSave.TabIndex = 23;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -485,7 +511,8 @@
             this.cb_deployment_path.Location = new System.Drawing.Point(95, 23);
             this.cb_deployment_path.Name = "cb_deployment_path";
             this.cb_deployment_path.Size = new System.Drawing.Size(162, 21);
-            this.cb_deployment_path.TabIndex = 1;
+            this.cb_deployment_path.TabIndex = 2;
+            this.cb_deployment_path.Leave += new System.EventHandler(this.cb_deployment_path_Leave);
             // 
             // btnBrowserDeployment
             // 
@@ -505,7 +532,7 @@
             this.btn_run_pre_deploy.Location = new System.Drawing.Point(591, 280);
             this.btn_run_pre_deploy.Name = "btn_run_pre_deploy";
             this.btn_run_pre_deploy.Size = new System.Drawing.Size(152, 23);
-            this.btn_run_pre_deploy.TabIndex = 12;
+            this.btn_run_pre_deploy.TabIndex = 18;
             this.btn_run_pre_deploy.Text = "2. Pre-Deployment";
             this.btn_run_pre_deploy.UseVisualStyleBackColor = true;
             this.btn_run_pre_deploy.Click += new System.EventHandler(this.btn_run_pre_deploy_Click);
@@ -626,6 +653,8 @@
         private System.Windows.Forms.Button btn_clean;
         private System.Windows.Forms.Label btn_collapse;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chkUnicode;
+        private System.Windows.Forms.ToolStripMenuItem btnMerge;
     }
 }
 

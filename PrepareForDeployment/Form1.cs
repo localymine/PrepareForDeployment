@@ -81,7 +81,7 @@ namespace PrepareForDeployment
             btn_run_rollback.Enabled = flag;
             btn_run_pre_deploy.Enabled = flag;
             // btnOpen.Enabled = flag;
-            btnSave.Enabled = flag;
+            // btnSave.Enabled = flag;
         }
 
         private void GetInfoFromForm()
@@ -204,6 +204,10 @@ namespace PrepareForDeployment
                 using (StreamWriter sw = File.AppendText(_strBackupBat))
                 {
                     sw.WriteLine("@echo off");
+                    if (chkUnicode.Checked)
+                    {
+                        sw.WriteLine("chcp 65001");
+                    }
                     sw.WriteLine(":Syntax");
                     sw.WriteLine("echo ------------------------------------");
                     sw.WriteLine("echo Backup Sourcecode From The Production");
@@ -216,7 +220,7 @@ namespace PrepareForDeployment
                         string productionFilePath = Path.Combine(_strProductionPath, file);
                         if (File.Exists(productionFilePath))
                         {
-                            sw.WriteLine("copy " + productionFilePath + " " + Path.Combine(_strSubBackupPath, file));
+                            sw.WriteLine("copy \"" + productionFilePath + "\" \"" + Path.Combine(_strSubBackupPath, file) + "\"");
                         }
                     }
                     sw.WriteLine(Environment.NewLine);
@@ -229,7 +233,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     //
                     sw.WriteLine("@echo off");
-                    sw.WriteLine("pause");
+                    sw.WriteLine("timeout /t 3");
                 }
                 //
                 // https://msdn.microsoft.com/en-us/library/system.diagnostics.process.exitcode.aspx
@@ -283,6 +287,10 @@ namespace PrepareForDeployment
                 using (StreamWriter sw = File.AppendText(_strDeployBat))
                 {
                     sw.WriteLine("@echo off");
+                    if (chkUnicode.Checked)
+                    {
+                        sw.WriteLine("chcp 65001");
+                    }
                     sw.WriteLine(":Syntax");
                     sw.WriteLine("echo ------------------------------------");
                     sw.WriteLine("echo Deploy Source Code");
@@ -292,7 +300,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     foreach (string file in _arrListFiles)
                     {
-                        sw.WriteLine("copy " + Path.Combine(_strSubDeployPath, file) + " " + Path.Combine(_strProductionPath, file));
+                        sw.WriteLine("copy \"" + Path.Combine(_strSubDeployPath, file) + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
                     }
                     sw.WriteLine(Environment.NewLine);
                     // log
@@ -304,7 +312,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     //
                     sw.WriteLine("@echo off");
-                    sw.WriteLine("pause");
+                    sw.WriteLine("timeout /t 3");
                 }
             }
             catch (Exception ex)
@@ -325,6 +333,10 @@ namespace PrepareForDeployment
                 using (StreamWriter sw = File.AppendText(_strRollbackBat))
                 {
                     sw.WriteLine("@echo off");
+                    if (chkUnicode.Checked)
+                    {
+                        sw.WriteLine("chcp 65001");
+                    }
                     sw.WriteLine(":Syntax");
                     sw.WriteLine("echo ------------------------------------");
                     sw.WriteLine("echo Delete The Files From The Production");
@@ -338,12 +350,12 @@ namespace PrepareForDeployment
                         // there's no file in backup folder
                         if (!File.Exists(subBackupFilePath))
                         {
-                            sw.WriteLine("del " + Path.Combine(_strProductionPath, file));
+                            sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
                         }
                         else
                         {
-                            sw.WriteLine("del " + Path.Combine(_strProductionPath, file));
-                            sw.WriteLine("copy " + subBackupFilePath + " " + Path.Combine(_strProductionPath, file));
+                            sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
+                            sw.WriteLine("copy \"" + subBackupFilePath + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
                         }
                         sw.WriteLine(Environment.NewLine);
                     }
@@ -355,7 +367,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
-                    sw.WriteLine("pause");
+                    sw.WriteLine("timeout /t 3");
                 }
                 //
                 WriteLogExeBat("BACKUP");
@@ -378,6 +390,10 @@ namespace PrepareForDeployment
                 using (StreamWriter sw = File.AppendText(_strPreDeployBat))
                 {
                     sw.WriteLine("@echo off");
+                    if (chkUnicode.Checked)
+                    {
+                        sw.WriteLine("chcp 65001");
+                    }
                     sw.WriteLine(":Syntax");
                     sw.WriteLine("echo ------------------------------------");
                     sw.WriteLine("echo Copy Files From The Resource (Current Changed)");
@@ -392,7 +408,7 @@ namespace PrepareForDeployment
                         // copy resour -> deploy folder
                         if (File.Exists(subResourceFilePath))
                         {
-                            sw.WriteLine("copy " + subResourceFilePath + " " + Path.Combine(_strSubDeployPath, file));
+                            sw.WriteLine("copy \"" + subResourceFilePath + "\" \"" + Path.Combine(_strSubDeployPath, file) + "\"");
                         }
                     }
                     sw.WriteLine(Environment.NewLine);
@@ -404,7 +420,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
-                    sw.WriteLine("pause");
+                    sw.WriteLine("timeout /t 3");
                 }
                 //
                 WriteLogExeBat("PRE-DEPLOY");
@@ -627,24 +643,6 @@ namespace PrepareForDeployment
             }
         }
 
-        private void SaveDataFromCombobox(string fileName, ComboBox cb)
-        {
-            try
-            {
-                using (StreamWriter sw = File.CreateText(fileName))
-                {
-                    foreach(object item in cb.Items)
-                    {
-                        sw.WriteLine(item);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
         private void LoadDataToCombobox()
         {
             try
@@ -687,6 +685,11 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+
+                // make folder
+                MkdirFolder(_strBackupPathCur);
+                //
                 string noteFile = @Path.Combine(_strBackupPathCur, "ReleaseNote.txt");
                 using (StreamWriter sw = File.CreateText(noteFile))
                 {
@@ -986,6 +989,98 @@ namespace PrepareForDeployment
             {
                 panel1.Visible = false;
             }
+        }
+
+        private void cb_production_path_Leave(object sender, EventArgs e)
+        {
+            string item = cb_production_path.Text;
+            if (item.Trim() != "" && !cb_production_path.Items.Contains(item))
+            {
+                cb_production_path.Items.Add(item);
+            }
+        }
+
+        private void cb_deployment_path_Leave(object sender, EventArgs e)
+        {
+            string item = cb_deployment_path.Text;
+            if (item.Trim() != "" && !cb_deployment_path.Items.Contains(item))
+            {
+                cb_deployment_path.Items.Add(item);
+            }
+        }
+
+        private void cb_backup_path_Leave(object sender, EventArgs e)
+        {
+            string item = cb_backup_path.Text;
+            if (item.Trim() != "" && !cb_backup_path.Items.Contains(item))
+            {
+                cb_backup_path.Items.Add(item);
+            }
+        }
+
+        private void btnMerge_Click(object sender, EventArgs e)
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(cb_production_path.Text) || string.IsNullOrWhiteSpace(cb_production_path.Text))
+            {
+                MessageBox.Show(btnBrowserProduction.Text + " is not empty");
+                flag = false;
+            }
+            //
+            if (string.IsNullOrEmpty(cb_backup_path.Text) || string.IsNullOrWhiteSpace(cb_backup_path.Text))
+            {
+                MessageBox.Show(btnBrowserBackup.Text + " is not empty");
+                flag = false;
+            }
+            //
+            if (string.IsNullOrEmpty(tb_sub_backup_folder.Text) || string.IsNullOrWhiteSpace(tb_sub_backup_folder.Text))
+            {
+                MessageBox.Show(lb_tb_sub_backup_folder.Text + " is not empty");
+                flag = false;
+            }
+            //
+            if (string.IsNullOrEmpty(tb_sub_deploy_folder.Text) || string.IsNullOrWhiteSpace(tb_sub_deploy_folder.Text))
+            {
+                MessageBox.Show(lb_tb_sub_deploy_folder.Text + " is not empty");
+                flag = false;
+            }
+            //
+            if (flag)
+            {
+                Form4 frmMerge = new Form4(SetDataMainForm());
+                frmMerge.ShowDialog();
+               
+                foreach (string item in frmMerge._listFiles)
+                {
+                    rtb_list_files.AppendText(item);
+                    rtb_list_files.AppendText(Environment.NewLine);
+                }
+            }
+        }
+
+        public List<KeyValuePair<string, string>> SetDataMainForm()
+        {
+            List<KeyValuePair<string, string>> data = new List<KeyValuePair<string, string>>();
+            try
+            {
+                //
+                GetInfoFromForm();
+                //
+                frmMain form = new frmMain();
+                data.Add(new KeyValuePair<string, string>("CUR_BK_PATH", _strBackupPathCur));
+                data.Add(new KeyValuePair<string, string>("PRE_DEPLOY_PATH", _strPreDeployPath));
+                data.Add(new KeyValuePair<string, string>("SUB_BK_PATH", _strSubBackupPath));
+                data.Add(new KeyValuePair<string, string>("SUB_DEPLOY_PATH", _strSubDeployPath));
+                data.Add(new KeyValuePair<string, string>("BK_FOLDER", _strBackupFolder));
+                data.Add(new KeyValuePair<string, string>("DEPLOY_FOLDER", _strDeployFolder));
+                data.Add(new KeyValuePair<string, string>("PRODUCTION_FOLDER", _strProductionFolder));
+                //
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return data;
         }
     }
 }
