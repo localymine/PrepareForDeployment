@@ -58,6 +58,7 @@ namespace PrepareForDeployment
             {
                 Directory.CreateDirectory(_subDeployPath);
                 //
+                AllFiles.Clear();
                 string[] SubDirs = Directory.GetDirectories(_selectedPath);
                 Array.Sort(SubDirs, StringComparer.InvariantCulture);
                 foreach (string subFolder in SubDirs)

@@ -549,6 +549,7 @@ namespace PrepareForDeployment
             {
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                 startInfo.UseShellExecute = true;
+                startInfo.WorkingDirectory = @"C:\Windows\System32";
                 startInfo.FileName = exePath;
                 startInfo.Verb = "runas";
                 //MLHIDE
@@ -800,6 +801,7 @@ namespace PrepareForDeployment
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = folderDialog.SelectedPath;
+                        AllFiles.Clear();
                         ParsePath(selectedPath);
                         //
                         foreach (string item in AllFiles)
