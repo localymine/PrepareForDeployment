@@ -549,13 +549,14 @@ namespace PrepareForDeployment
             {
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                 startInfo.UseShellExecute = true;
+                startInfo.WorkingDirectory = Environment.ExpandEnvironmentVariables("%SystemRoot%") + @"\System32\cmd.exe";
                 startInfo.FileName = exePath;
                 startInfo.Verb = "runas";
                 //MLHIDE
                 startInfo.Arguments = parameters;
                 startInfo.ErrorDialog = true;
 
-                System.Diagnostics.Process proc = System.Diagnostics.Process.Start(startInfo);
+                Process proc = System.Diagnostics.Process.Start(startInfo);
                 proc.WaitForExit();
             }
             catch (Exception ex)
@@ -800,6 +801,7 @@ namespace PrepareForDeployment
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = folderDialog.SelectedPath;
+                        AllFiles.Clear();
                         ParsePath(selectedPath);
                         //
                         foreach (string item in AllFiles)
