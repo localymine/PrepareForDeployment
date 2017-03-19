@@ -569,6 +569,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (File.Exists(_strBackupBat))
                 {
                     System.Diagnostics.Process myProcess = null;
@@ -616,6 +618,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (!File.Exists(_strPreDeployBat))
                 {
                     throw new System.ArgumentException("Please Copy Resource Files to deploy Folder");
@@ -646,6 +650,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (File.Exists(_strRollbackBat))
                 { 
                     if (MessageBox.Show("Do you really want to restore The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -871,6 +877,7 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
                 //
                 if (string.IsNullOrEmpty(cb_deployment_path.Text) || string.IsNullOrWhiteSpace(cb_deployment_path.Text))
                 {
