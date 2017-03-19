@@ -543,6 +543,27 @@ namespace PrepareForDeployment
             }
         }
 
+        private void RunProcessAsAdmin(string exePath, string parameters)
+        {
+            try
+            {
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.UseShellExecute = true;
+                startInfo.FileName = exePath;
+                startInfo.Verb = "runas";
+                //MLHIDE
+                startInfo.Arguments = parameters;
+                startInfo.ErrorDialog = true;
+
+                System.Diagnostics.Process proc = System.Diagnostics.Process.Start(startInfo);
+                proc.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         private void btn_run_backup_Click(object sender, EventArgs e)
         {
             try
@@ -603,7 +624,8 @@ namespace PrepareForDeployment
                 {
                     if (MessageBox.Show("Do you really want to deploy The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start(_strDeployBat);
+                        RunProcessAsAdmin(_strPreDeployBat, "");
+                        // System.Diagnostics.Process.Start(_strDeployBat);
                         //
                         WriteLogExeBat("DEPLOY");
                     }
@@ -627,7 +649,8 @@ namespace PrepareForDeployment
                 { 
                     if (MessageBox.Show("Do you really want to restore The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start(_strRollbackBat);
+                        RunProcessAsAdmin(_strRollbackBat, "");
+                        // System.Diagnostics.Process.Start(_strRollbackBat);
                         //
                         WriteLogExeBat("ROLLBACK");
                     }
