@@ -669,6 +669,7 @@ namespace PrepareForDeployment
                         {
                             cmbs[i].Items.Add(item.Attributes["path"].Value);
                         }
+                        cmbs[i].SelectedIndex = 0;
                     }
                 }
             }
@@ -818,12 +819,14 @@ namespace PrepareForDeployment
         {
             Form2 frmAbout = new Form2();
             frmAbout.ShowDialog();
+            frmAbout.Dispose();
         }
 
         private void menuDeploymentFlow_Click(object sender, EventArgs e)
         {
             Form3 frmDeployment = new Form3();
             frmDeployment.ShowDialog();
+            frmDeployment.Dispose();
         }
 
         private void btnBrowserDeployment_Click(object sender, EventArgs e)
@@ -898,20 +901,24 @@ namespace PrepareForDeployment
             }
         }
 
-
-        private void btn_clean_Click(object sender, EventArgs e)
+        private void CleanRichTextBox(RichTextBox rtb)
         {
-            string[] lstFilePath = Lines(rtb_list_files.Text);
+            string[] lstFilePath = Lines(rtb.Text);
             Array.Sort(lstFilePath, StringComparer.InvariantCulture);
             //
-            rtb_list_files.Clear();
+            rtb.Clear();
             //
             List<string> lineLst = new List<string>();
-            foreach(string filePath in lstFilePath)
+            foreach (string filePath in lstFilePath)
             {
                 lineLst.Add(filePath.TrimStart(' ', '\\'));
             }
-            rtb_list_files.Text = string.Join(Environment.NewLine, lineLst.ToArray()).TrimStart(' ', '\\');
+            rtb.Text = string.Join(Environment.NewLine, lineLst.ToArray()).TrimStart(' ', '\\');
+        }
+
+        private void btn_clean_Click(object sender, EventArgs e)
+        {
+            CleanRichTextBox(rtb_list_files);
         }
 
         private void grResource_Paint(object sender, PaintEventArgs e)
@@ -1049,12 +1056,16 @@ namespace PrepareForDeployment
             {
                 Form4 frmMerge = new Form4(SetDataMainForm());
                 frmMerge.ShowDialog();
-               
-                foreach (string item in frmMerge._listFiles)
+
+                rtb_list_files.Clear();
+                foreach (string item in frmMerge._listFiles.Distinct())
                 {
                     rtb_list_files.AppendText(item);
                     rtb_list_files.AppendText(Environment.NewLine);
                 }
+                CleanRichTextBox(rtb_list_files);
+
+                frmMerge.Dispose();
             }
         }
 
@@ -1078,7 +1089,7 @@ namespace PrepareForDeployment
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             return data;
         }
