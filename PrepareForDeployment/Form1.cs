@@ -549,14 +549,14 @@ namespace PrepareForDeployment
             {
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                 startInfo.UseShellExecute = true;
-                startInfo.WorkingDirectory = @"C:\Windows\System32";
+                startInfo.WorkingDirectory = Environment.ExpandEnvironmentVariables("%SystemRoot%") + @"\System32\cmd.exe";
                 startInfo.FileName = exePath;
                 startInfo.Verb = "runas";
                 //MLHIDE
                 startInfo.Arguments = parameters;
                 startInfo.ErrorDialog = true;
 
-                System.Diagnostics.Process proc = System.Diagnostics.Process.Start(startInfo);
+                Process proc = System.Diagnostics.Process.Start(startInfo);
                 proc.WaitForExit();
             }
             catch (Exception ex)
@@ -569,6 +569,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (File.Exists(_strBackupBat))
                 {
                     System.Diagnostics.Process myProcess = null;
@@ -616,6 +618,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (!File.Exists(_strPreDeployBat))
                 {
                     throw new System.ArgumentException("Please Copy Resource Files to deploy Folder");
@@ -646,6 +650,8 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
+                //
                 if (File.Exists(_strRollbackBat))
                 { 
                     if (MessageBox.Show("Do you really want to restore The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -871,6 +877,7 @@ namespace PrepareForDeployment
         {
             try
             {
+                GetInfoFromForm();
                 //
                 if (string.IsNullOrEmpty(cb_deployment_path.Text) || string.IsNullOrWhiteSpace(cb_deployment_path.Text))
                 {
