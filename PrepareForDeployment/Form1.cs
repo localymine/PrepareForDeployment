@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Xml;
+using System.Text;
 
 namespace PrepareForDeployment
 {
@@ -232,7 +233,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
-                    sw.WriteLine("@echo off");
+                    sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
                 }
                 //
@@ -311,7 +312,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
-                    sw.WriteLine("@echo off");
+                    sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
                 }
             }
@@ -367,6 +368,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
+                    sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
                 }
                 //
@@ -420,6 +422,7 @@ namespace PrepareForDeployment
                     sw.WriteLine(") >> log.txt");
                     sw.WriteLine(Environment.NewLine);
                     //
+                    sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
                 }
                 //
@@ -433,11 +436,15 @@ namespace PrepareForDeployment
 
         private void btnBrowserProduction_Click(object sender, EventArgs e)
         {
-            using (var folderDialog = new FolderBrowserDialog())
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
-                if(folderDialog.ShowDialog() == DialogResult.OK)
+                folderDialog.Description = "Please choose the folder\nWhere you want to deploy the source code";
+                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
+                    Properties.Settings.Default.RecentFolder = selectedPath;
+                    //
                     cb_production_path.Text = selectedPath;
                     cb_production_path.Items.AddRange(new object[] { selectedPath });
                 }
@@ -446,11 +453,15 @@ namespace PrepareForDeployment
 
         private void btnBrowserBackup_Click(object sender, EventArgs e)
         {
-            using (var folderDialog = new FolderBrowserDialog())
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
+                folderDialog.Description = "Please choose the folder\nWhere you want to backup the source code";
+                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
+                    Properties.Settings.Default.RecentFolder = selectedPath;
+                    //
                     cb_backup_path.Text = selectedPath;
                     cb_backup_path.Items.AddRange(new object[] { selectedPath });
                 }
@@ -460,11 +471,15 @@ namespace PrepareForDeployment
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Please Choose File";
             dialog.Filter = "Support Files | *.txt; *.bat; *.log; *.dat; *.rm;";
+            dialog.InitialDirectory = Properties.Settings.Default.RecentFileFolder;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                Properties.Settings.Default.RecentFileFolder = dialog.FileName;
+                //
                 rtb_list_files.Clear();
-                using (StreamReader sr = File.OpenText(dialog.FileName))
+                using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
                 {
                     string s = "";
                     while((s = sr.ReadLine()) != null)
@@ -726,6 +741,8 @@ namespace PrepareForDeployment
                 {
                     sw.WriteLine(rtb_release_note.Text);
                 }
+                //
+                MessageBox.Show("The Realse Note has been created!");
             }
             catch (Exception ex)
             {
@@ -738,11 +755,14 @@ namespace PrepareForDeployment
             try
             {
                 OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Please Choose File";
                 dialog.Filter = "Support Files | *.txt; *.bat; *.log; *.dat; *.rm;";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
+                    Properties.Settings.Default.RecentFileFolder = dialog.FileName;
+                    //
                     rtb_release_note.Clear();
-                    using (StreamReader sr = File.OpenText(dialog.FileName))
+                    using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
                     {
                         string s = "";
                         while ((s = sr.ReadLine()) != null)
@@ -802,11 +822,15 @@ namespace PrepareForDeployment
         {
             try
             {
-                using (var folderDialog = new FolderBrowserDialog())
+                using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
                 {
+                    folderDialog.Description = "Please choose the folder\nWhere is keeping the source code that have been stored before";
+                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = folderDialog.SelectedPath;
+                        Properties.Settings.Default.RecentFolder = selectedPath;
+                        //
                         AllFiles.Clear();
                         ParsePath(selectedPath);
                         //
@@ -862,11 +886,15 @@ namespace PrepareForDeployment
 
         private void btnBrowserDeployment_Click(object sender, EventArgs e)
         {
-            using (var folderDialog = new FolderBrowserDialog())
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
+                folderDialog.Description = "Please choose the folder\nThe resource from this folder will be copied to [" + tb_sub_deploy_folder.Text + "] folder\nIn order to prepare for deployment";
+                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
+                    Properties.Settings.Default.RecentFolder = selectedPath;
+                    //
                     cb_deployment_path.Text = selectedPath;
                     cb_deployment_path.Items.AddRange(new object[] { selectedPath });
                 }

@@ -33,11 +33,14 @@ namespace PrepareForDeployment
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            using (var folderDialog = new FolderBrowserDialog())
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
+                folderDialog.Description = "Please choose the folder\nWhere you want to deploy the source code";
+                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     _selectedPath = folderDialog.SelectedPath;
+                    Properties.Settings.Default.RecentFolder = _selectedPath;
                 }
             }
         }
