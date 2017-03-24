@@ -75,6 +75,7 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,6 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_list_files.BackColor = System.Drawing.SystemColors.Window;
             this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtb_list_files.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_list_files.Location = new System.Drawing.Point(6, 50);
             this.rtb_list_files.Name = "rtb_list_files";
             this.rtb_list_files.Size = new System.Drawing.Size(452, 185);
@@ -394,6 +396,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnMerge,
+            this.toolStripSeparator1,
             this.btnExitMenu});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -475,6 +478,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_release_note.BackColor = System.Drawing.SystemColors.Window;
             this.rtb_release_note.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtb_release_note.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
             this.rtb_release_note.Name = "rtb_release_note";
             this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
@@ -557,6 +561,11 @@
             this.label2.Size = new System.Drawing.Size(724, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // frmMain
             // 
@@ -655,6 +664,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkUnicode;
         private System.Windows.Forms.ToolStripMenuItem btnMerge;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
