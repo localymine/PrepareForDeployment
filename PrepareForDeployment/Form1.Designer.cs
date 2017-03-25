@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grProduction = new System.Windows.Forms.GroupBox();
             this.cb_production_path = new System.Windows.Forms.ComboBox();
             this.btnBrowserProduction = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grBackup = new System.Windows.Forms.GroupBox();
             this.dtpk_cur_time = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpk_cur_date = new System.Windows.Forms.DateTimePicker();
@@ -60,6 +60,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMerge = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDeploymentFlow = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,9 +76,8 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grProduction.SuspendLayout();
+            this.grBackup.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -86,16 +86,17 @@
             this.grResource.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // grProduction
             // 
-            this.groupBox1.Controls.Add(this.cb_production_path);
-            this.groupBox1.Controls.Add(this.btnBrowserProduction);
-            this.groupBox1.Location = new System.Drawing.Point(12, 32);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(267, 55);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Production Section";
+            this.grProduction.Controls.Add(this.cb_production_path);
+            this.grProduction.Controls.Add(this.btnBrowserProduction);
+            this.grProduction.Location = new System.Drawing.Point(12, 32);
+            this.grProduction.Name = "grProduction";
+            this.grProduction.Size = new System.Drawing.Size(267, 55);
+            this.grProduction.TabIndex = 0;
+            this.grProduction.TabStop = false;
+            this.grProduction.Text = "Production Section";
+            this.grProduction.Paint += new System.Windows.Forms.PaintEventHandler(this.grProduction_Paint);
             // 
             // cb_production_path
             // 
@@ -118,20 +119,21 @@
             this.btnBrowserProduction.Text = "Production Path";
             this.btnBrowserProduction.Click += new System.EventHandler(this.btnBrowserProduction_Click);
             // 
-            // groupBox2
+            // grBackup
             // 
-            this.groupBox2.Controls.Add(this.dtpk_cur_time);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.dtpk_cur_date);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.cb_backup_path);
-            this.groupBox2.Controls.Add(this.btnBrowserBackup);
-            this.groupBox2.Location = new System.Drawing.Point(12, 154);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(267, 86);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Backup Section";
+            this.grBackup.Controls.Add(this.dtpk_cur_time);
+            this.grBackup.Controls.Add(this.label5);
+            this.grBackup.Controls.Add(this.dtpk_cur_date);
+            this.grBackup.Controls.Add(this.label4);
+            this.grBackup.Controls.Add(this.cb_backup_path);
+            this.grBackup.Controls.Add(this.btnBrowserBackup);
+            this.grBackup.Location = new System.Drawing.Point(12, 154);
+            this.grBackup.Name = "grBackup";
+            this.grBackup.Size = new System.Drawing.Size(267, 86);
+            this.grBackup.TabIndex = 2;
+            this.grBackup.TabStop = false;
+            this.grBackup.Text = "Backup Section";
+            this.grBackup.Paint += new System.Windows.Forms.PaintEventHandler(this.grBackup_Paint);
             // 
             // dtpk_cur_time
             // 
@@ -409,6 +411,11 @@
             this.btnMerge.Text = "&Merge...";
             this.btnMerge.Click += new System.EventHandler(this.btnMerge_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            // 
             // btnExitMenu
             // 
             this.btnExitMenu.Name = "btnExitMenu";
@@ -562,11 +569,6 @@
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,8 +587,8 @@
             this.Controls.Add(this.btn_Generate);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grBackup);
+            this.Controls.Add(this.grProduction);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -597,10 +599,10 @@
             this.Text = "Prepare For Deployment";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grProduction.ResumeLayout(false);
+            this.grProduction.PerformLayout();
+            this.grBackup.ResumeLayout(false);
+            this.grBackup.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -618,9 +620,9 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grProduction;
         private System.Windows.Forms.Label btnBrowserProduction;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grBackup;
         private System.Windows.Forms.DateTimePicker dtpk_cur_date;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cb_backup_path;
