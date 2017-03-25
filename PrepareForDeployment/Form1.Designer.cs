@@ -90,13 +90,13 @@
             // 
             this.grProduction.Controls.Add(this.cb_production_path);
             this.grProduction.Controls.Add(this.btnBrowserProduction);
+            this.grProduction.ForeColor = System.Drawing.Color.Tomato;
             this.grProduction.Location = new System.Drawing.Point(12, 32);
             this.grProduction.Name = "grProduction";
             this.grProduction.Size = new System.Drawing.Size(267, 55);
             this.grProduction.TabIndex = 0;
             this.grProduction.TabStop = false;
             this.grProduction.Text = "Production Section";
-            this.grProduction.Paint += new System.Windows.Forms.PaintEventHandler(this.grProduction_Paint);
             // 
             // cb_production_path
             // 
@@ -109,12 +109,15 @@
             // 
             // btnBrowserProduction
             // 
+            this.btnBrowserProduction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowserProduction.AutoSize = true;
+            this.btnBrowserProduction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.btnBrowserProduction.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBrowserProduction.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnBrowserProduction.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowserProduction.Location = new System.Drawing.Point(6, 27);
             this.btnBrowserProduction.Name = "btnBrowserProduction";
-            this.btnBrowserProduction.Size = new System.Drawing.Size(83, 13);
+            this.btnBrowserProduction.Size = new System.Drawing.Size(85, 15);
             this.btnBrowserProduction.TabIndex = 0;
             this.btnBrowserProduction.Text = "Production Path";
             this.btnBrowserProduction.Click += new System.EventHandler(this.btnBrowserProduction_Click);
@@ -127,13 +130,13 @@
             this.grBackup.Controls.Add(this.label4);
             this.grBackup.Controls.Add(this.cb_backup_path);
             this.grBackup.Controls.Add(this.btnBrowserBackup);
+            this.grBackup.ForeColor = System.Drawing.Color.Tomato;
             this.grBackup.Location = new System.Drawing.Point(12, 154);
             this.grBackup.Name = "grBackup";
             this.grBackup.Size = new System.Drawing.Size(267, 86);
             this.grBackup.TabIndex = 2;
             this.grBackup.TabStop = false;
             this.grBackup.Text = "Backup Section";
-            this.grBackup.Paint += new System.Windows.Forms.PaintEventHandler(this.grBackup_Paint);
             // 
             // dtpk_cur_time
             // 
@@ -148,6 +151,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(152, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
@@ -166,6 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(6, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
@@ -183,12 +188,15 @@
             // 
             // btnBrowserBackup
             // 
+            this.btnBrowserBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowserBackup.AutoSize = true;
+            this.btnBrowserBackup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.btnBrowserBackup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBrowserBackup.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnBrowserBackup.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowserBackup.Location = new System.Drawing.Point(6, 27);
             this.btnBrowserBackup.Name = "btnBrowserBackup";
-            this.btnBrowserBackup.Size = new System.Drawing.Size(69, 13);
+            this.btnBrowserBackup.Size = new System.Drawing.Size(71, 15);
             this.btnBrowserBackup.TabIndex = 0;
             this.btnBrowserBackup.Text = "Backup Path";
             this.btnBrowserBackup.Click += new System.EventHandler(this.btnBrowserBackup_Click);
@@ -509,14 +517,13 @@
             // 
             this.grResource.Controls.Add(this.cb_deployment_path);
             this.grResource.Controls.Add(this.btnBrowserDeployment);
-            this.grResource.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.grResource.ForeColor = System.Drawing.Color.DodgerBlue;
             this.grResource.Location = new System.Drawing.Point(12, 93);
             this.grResource.Name = "grResource";
             this.grResource.Size = new System.Drawing.Size(267, 55);
             this.grResource.TabIndex = 2;
             this.grResource.TabStop = false;
             this.grResource.Text = "Deployment Resource Section";
-            this.grResource.Paint += new System.Windows.Forms.PaintEventHandler(this.grResource_Paint);
             // 
             // cb_deployment_path
             // 
@@ -529,12 +536,15 @@
             // 
             // btnBrowserDeployment
             // 
+            this.btnBrowserDeployment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowserDeployment.AutoSize = true;
+            this.btnBrowserDeployment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.btnBrowserDeployment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBrowserDeployment.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnBrowserDeployment.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBrowserDeployment.Location = new System.Drawing.Point(6, 27);
             this.btnBrowserDeployment.Name = "btnBrowserDeployment";
-            this.btnBrowserDeployment.Size = new System.Drawing.Size(78, 13);
+            this.btnBrowserDeployment.Size = new System.Drawing.Size(80, 15);
             this.btnBrowserDeployment.TabIndex = 0;
             this.btnBrowserDeployment.Text = "Resource Path";
             this.btnBrowserDeployment.Click += new System.EventHandler(this.btnBrowserDeployment_Click);
