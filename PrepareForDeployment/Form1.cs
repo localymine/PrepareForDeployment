@@ -439,11 +439,18 @@ namespace PrepareForDeployment
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Please choose the folder\nWhere you want to deploy the source code";
-                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                folderDialog.RootFolder = Environment.SpecialFolder.DesktopDirectory;
+                if (Directory.Exists(Properties.Settings.Default.RecentFolder))
+                {
+                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                    SendKeys.Send("{TAB}{TAB}{RIGHT}");
+                }
+                //
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
                     Properties.Settings.Default.RecentFolder = selectedPath;
+                    Properties.Settings.Default.Save();
                     //
                     cb_production_path.Text = selectedPath;
                     cb_production_path.Items.AddRange(new object[] { selectedPath });
@@ -456,11 +463,18 @@ namespace PrepareForDeployment
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Please choose the folder\nWhere you want to backup the source code";
-                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                folderDialog.RootFolder = Environment.SpecialFolder.DesktopDirectory;
+                if (Directory.Exists(Properties.Settings.Default.RecentFolder))
+                {
+                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                    SendKeys.Send("{TAB}{TAB}{RIGHT}");
+                }
+                //
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
                     Properties.Settings.Default.RecentFolder = selectedPath;
+                    Properties.Settings.Default.Save();
                     //
                     cb_backup_path.Text = selectedPath;
                     cb_backup_path.Items.AddRange(new object[] { selectedPath });
@@ -473,10 +487,15 @@ namespace PrepareForDeployment
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Please Choose File";
             dialog.Filter = "Support Files | *.txt; *.bat; *.log; *.dat; *.rm;";
-            dialog.InitialDirectory = Properties.Settings.Default.RecentFileFolder;
+            if (Directory.Exists(Properties.Settings.Default.RecentFileFolder))
+            {
+                dialog.InitialDirectory = Properties.Settings.Default.RecentFileFolder;
+            }
+            //
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.RecentFileFolder = dialog.FileName;
+                Properties.Settings.Default.Save();
                 //
                 rtb_list_files.Clear();
                 using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
@@ -757,9 +776,15 @@ namespace PrepareForDeployment
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Title = "Please Choose File";
                 dialog.Filter = "Support Files | *.txt; *.bat; *.log; *.dat; *.rm;";
+                if (Directory.Exists(Properties.Settings.Default.RecentFileFolder))
+                {
+                    dialog.InitialDirectory = Properties.Settings.Default.RecentFileFolder;
+                }
+                //
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     Properties.Settings.Default.RecentFileFolder = dialog.FileName;
+                    Properties.Settings.Default.Save();
                     //
                     rtb_release_note.Clear();
                     using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
@@ -825,11 +850,18 @@ namespace PrepareForDeployment
                 using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
                 {
                     folderDialog.Description = "Please choose the folder\nWhere is keeping the source code that have been stored before";
-                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                    folderDialog.RootFolder = Environment.SpecialFolder.DesktopDirectory;
+                    if (Directory.Exists(Properties.Settings.Default.RecentFolder))
+                    {
+                        folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                        SendKeys.Send("{TAB}{TAB}{RIGHT}");
+                    }
+                    //
                     if (folderDialog.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = folderDialog.SelectedPath;
                         Properties.Settings.Default.RecentFolder = selectedPath;
+                        Properties.Settings.Default.Save();
                         //
                         AllFiles.Clear();
                         ParsePath(selectedPath);
@@ -889,11 +921,18 @@ namespace PrepareForDeployment
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Please choose the folder\nThe resource from this folder will be copied to [" + tb_sub_deploy_folder.Text + "] folder\nIn order to prepare for deployment";
-                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                folderDialog.RootFolder = Environment.SpecialFolder.DesktopDirectory;
+                if (Directory.Exists(Properties.Settings.Default.RecentFolder))
+                {
+                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                    SendKeys.Send("{TAB}{TAB}{RIGHT}");
+                }
+                //
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     string selectedPath = folderDialog.SelectedPath;
                     Properties.Settings.Default.RecentFolder = selectedPath;
+                    Properties.Settings.Default.Save();
                     //
                     cb_deployment_path.Text = selectedPath;
                     cb_deployment_path.Items.AddRange(new object[] { selectedPath });
