@@ -543,6 +543,7 @@ namespace PrepareForDeployment
             {
                 rtb_list_files.Text = rtb_list_files.Text.Replace(text1, text2);
             }
+            rtb_list_files.Focus();
         }
 
         public void AddContextMenu(RichTextBox rtb)
@@ -1047,6 +1048,7 @@ namespace PrepareForDeployment
         private void btn_clean_Click(object sender, EventArgs e)
         {
             CleanRichTextBox(rtb_list_files);
+            rtb_list_files.Focus();
         }
 
         private void grResource_Paint(object sender, PaintEventArgs e)
