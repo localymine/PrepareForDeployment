@@ -36,11 +36,18 @@ namespace PrepareForDeployment
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
                 folderDialog.Description = "Please choose the folder\nWhere you want to deploy the source code";
-                folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                folderDialog.RootFolder = Environment.SpecialFolder.DesktopDirectory;
+                if (Directory.Exists(Properties.Settings.Default.RecentFolder))
+                {
+                    folderDialog.SelectedPath = Properties.Settings.Default.RecentFolder;
+                    SendKeys.Send("{TAB}{TAB}{RIGHT}");
+                }
+                //
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     _selectedPath = folderDialog.SelectedPath;
                     Properties.Settings.Default.RecentFolder = _selectedPath;
+                    Properties.Settings.Default.Save();
                 }
             }
         }
