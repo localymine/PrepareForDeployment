@@ -254,6 +254,7 @@
             this.rtb_list_files.TabIndex = 15;
             this.rtb_list_files.Text = "";
             this.rtb_list_files.WordWrap = false;
+            this.rtb_list_files.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_list_files_KeyDown);
             // 
             // groupBox4
             // 
@@ -491,6 +492,7 @@
             this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
             this.rtb_release_note.TabIndex = 21;
             this.rtb_release_note.Text = "";
+            this.rtb_release_note.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_release_note_KeyDown);
             // 
             // btnSave
             // 
