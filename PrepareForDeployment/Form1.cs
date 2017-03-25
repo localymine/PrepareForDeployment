@@ -788,6 +788,7 @@ namespace PrepareForDeployment
                 }
                 //
                 MessageBox.Show("The Realse Note has been created!");
+                rtb_release_note.Focus();
             }
             catch (Exception ex)
             {
@@ -822,6 +823,7 @@ namespace PrepareForDeployment
                             rtb_release_note.AppendText(Environment.NewLine);
                         }
                     }
+                    rtb_release_note.Focus();
                 }
             }
             catch(Exception ex)
@@ -1051,6 +1053,17 @@ namespace PrepareForDeployment
             rtb_list_files.Focus();
         }
 
+        private void grProduction_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics gfx = e.Graphics;
+            Pen p = new Pen(Color.OrangeRed, 1);
+            gfx.DrawLine(p, 0, 6, 0, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, 0, 6, 5, 6);
+            gfx.DrawLine(p, 100, 6, e.ClipRectangle.Width - 2, 6);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, 6, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2, 0, e.ClipRectangle.Height - 2);
+        }
+
         private void grResource_Paint(object sender, PaintEventArgs e)
         {
             Graphics gfx = e.Graphics;
@@ -1058,6 +1071,17 @@ namespace PrepareForDeployment
             gfx.DrawLine(p, 0, 6, 0, e.ClipRectangle.Height - 2);
             gfx.DrawLine(p, 0, 6, 5, 6);
             gfx.DrawLine(p, 155, 6, e.ClipRectangle.Width - 2, 6);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, 6, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2, 0, e.ClipRectangle.Height - 2);
+        }
+
+        private void grBackup_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics gfx = e.Graphics;
+            Pen p = new Pen(Color.OrangeRed, 1);
+            gfx.DrawLine(p, 0, 6, 0, e.ClipRectangle.Height - 2);
+            gfx.DrawLine(p, 0, 6, 5, 6);
+            gfx.DrawLine(p, 87, 6, e.ClipRectangle.Width - 2, 6);
             gfx.DrawLine(p, e.ClipRectangle.Width - 2, 6, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2);
             gfx.DrawLine(p, e.ClipRectangle.Width - 2, e.ClipRectangle.Height - 2, 0, e.ClipRectangle.Height - 2);
         }
@@ -1223,5 +1247,6 @@ namespace PrepareForDeployment
             }
             return data;
         }
+
     }
 }
