@@ -537,13 +537,18 @@ namespace PrepareForDeployment
 
         private void btn_replace_Click(object sender, EventArgs e)
         {
-            string text1 = tb_text1.Text.Trim();
-            string text2 = tb_text2.Text.Trim();
-            if (text1 != "")
+            try
             {
+                string text1 = tb_text1.Text;
+                string text2 = tb_text2.Text;
                 rtb_list_files.Text = rtb_list_files.Text.Replace(text1, text2);
+                rtb_list_files.Focus();
             }
-            rtb_list_files.Focus();
+            catch (Exception ex)
+            {
+
+            }
+            
         }
 
         public void AddContextMenu(RichTextBox rtb)
@@ -1248,5 +1253,40 @@ namespace PrepareForDeployment
             return data;
         }
 
+        private void rtb_list_files_KeyDown(object sender, KeyEventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            if (e.KeyCode == Keys.Z & (e.Control))
+            {
+                this.SuspendLayout();
+                rtb.Undo();
+                this.ResumeLayout();
+            }
+            //
+            if (e.KeyCode == Keys.Y & (e.Control))
+            {
+                this.SuspendLayout();
+                rtb.Redo();
+                this.ResumeLayout();
+            }
+        }
+
+        private void rtb_release_note_KeyDown(object sender, KeyEventArgs e)
+        {
+            RichTextBox rtb = (RichTextBox)sender;
+            if (e.KeyCode == Keys.Z & (e.Control))
+            {
+                this.SuspendLayout();
+                rtb.Undo();
+                this.ResumeLayout();
+            }
+            //
+            if (e.KeyCode == Keys.Y & (e.Control))
+            {
+                this.SuspendLayout();
+                rtb.Redo();
+                this.ResumeLayout();
+            }
+        }
     }
 }
