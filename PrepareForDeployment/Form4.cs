@@ -68,6 +68,7 @@ namespace PrepareForDeployment
             {
                 Directory.CreateDirectory(_subDeployPath);
                 //
+                rtbListFolder.Clear();
                 AllFiles.Clear();
                 string[] SubDirs = Directory.GetDirectories(_selectedPath);
                 Array.Sort(SubDirs, StringComparer.InvariantCulture);
@@ -107,6 +108,8 @@ namespace PrepareForDeployment
                     rtbListFolder.AppendText(item);
                     rtbListFolder.AppendText(Environment.NewLine);
                 }
+                //
+                rtbListFolder.Focus();
             }
             catch(Exception ex)
             {
