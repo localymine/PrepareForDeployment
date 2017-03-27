@@ -76,6 +76,9 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rtb_unused_files = new System.Windows.Forms.RichTextBox();
             this.grProduction.SuspendLayout();
             this.grBackup.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -255,10 +258,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_list_files.BackColor = System.Drawing.SystemColors.Window;
             this.rtb_list_files.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtb_list_files.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtb_list_files.Location = new System.Drawing.Point(6, 50);
+            this.rtb_list_files.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.rtb_list_files.Location = new System.Drawing.Point(6, 69);
             this.rtb_list_files.Name = "rtb_list_files";
-            this.rtb_list_files.Size = new System.Drawing.Size(452, 185);
+            this.rtb_list_files.Size = new System.Drawing.Size(452, 94);
             this.rtb_list_files.TabIndex = 15;
             this.rtb_list_files.Text = "";
             this.rtb_list_files.WordWrap = false;
@@ -266,6 +269,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rtb_unused_files);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.chkUnicode);
             this.groupBox4.Controls.Add(this.btn_clean);
             this.groupBox4.Controls.Add(this.btnReadFolder);
@@ -581,6 +587,32 @@
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Deployment Files";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Unused Files";
+            // 
+            // rtb_unused_files
+            // 
+            this.rtb_unused_files.Location = new System.Drawing.Point(6, 186);
+            this.rtb_unused_files.Name = "rtb_unused_files";
+            this.rtb_unused_files.Size = new System.Drawing.Size(452, 47);
+            this.rtb_unused_files.TabIndex = 18;
+            this.rtb_unused_files.Text = "";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +711,9 @@
         private System.Windows.Forms.CheckBox chkUnicode;
         private System.Windows.Forms.ToolStripMenuItem btnMerge;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.RichTextBox rtb_unused_files;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
 
