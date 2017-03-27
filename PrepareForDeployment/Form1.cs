@@ -13,6 +13,7 @@ namespace PrepareForDeployment
     public partial class frmMain : Form
     {
         private string[] _arrListFiles = { };
+        private string[] _arrUnusedFiles = { };
         private string _strProductionPath;
         private string _strProductionFolder;
         private string _strBackupPath;
@@ -197,6 +198,7 @@ namespace PrepareForDeployment
         {
             // prepare list file path
             _arrListFiles = StripSlash(Lines(rtb_list_files.Text));
+            _arrUnusedFiles = StripSlash(Lines(rtb_unused_files.Text));
             //
             List<string> tPaths = new List<string>();
             foreach(string filePath in _arrListFiles)
@@ -206,9 +208,16 @@ namespace PrepareForDeployment
                 string tPath = Path.Combine(k);
                 tPaths.Add(tPath);
             }
+            //
+            foreach (string filePath in _arrUnusedFiles)
+            {
+                // remove the file at the end of each path
+                string[] k = filePath.Split(new string[] { "\\" }, StringSplitOptions.None).Reverse().Skip(1).Reverse().ToArray();
+                string tPath = Path.Combine(k);
+                tPaths.Add(tPath);
+            }
             // make folder following path (bk and deploy)
-            string[] tempPaths = tPaths.Distinct().ToArray();
-            foreach (string tFolder in tempPaths)
+            foreach (string tFolder in tPaths.Distinct().ToArray())
             {
                 MkdirFolder(Path.Combine(_strSubBackupPath, tFolder));
                 MkdirFolder(Path.Combine(_strSubDeployPath, tFolder));
@@ -239,6 +248,15 @@ namespace PrepareForDeployment
                     sw.WriteLine(":End");
                     sw.WriteLine(Environment.NewLine);
                     foreach (string file in _arrListFiles)
+                    {
+                        string productionFilePath = Path.Combine(_strProductionPath, file);
+                        if (File.Exists(productionFilePath))
+                        {
+                            sw.WriteLine("copy \"" + productionFilePath + "\" \"" + Path.Combine(_strSubBackupPath, file) + "\"");
+                        }
+                    }
+                    //
+                    foreach (string file in _arrUnusedFiles)
                     {
                         string productionFilePath = Path.Combine(_strProductionPath, file);
                         if (File.Exists(productionFilePath))
@@ -323,7 +341,16 @@ namespace PrepareForDeployment
                     sw.WriteLine(Environment.NewLine);
                     foreach (string file in _arrListFiles)
                     {
-                        sw.WriteLine("copy \"" + Path.Combine(_strSubDeployPath, file) + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
+                        string deployFilePath = Path.Combine(_strSubDeployPath, file);
+                        // if (File.Exists(deployFilePath))
+                        // {
+                            sw.WriteLine("copy \"" + deployFilePath + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
+                        // }
+                    }
+                    //
+                    foreach (string file in _arrUnusedFiles)
+                    {
+                        sw.WriteLine("del \"" +  Path.Combine(_strProductionPath, file) + "\"");
                     }
                     sw.WriteLine(Environment.NewLine);
                     // log
@@ -370,10 +397,16 @@ namespace PrepareForDeployment
                     foreach (string file in _arrListFiles)
                     {
                         string subBackupFilePath = Path.Combine(_strSubBackupPath, file);
+                        string productionFilePath = Path.Combine(_strProductionPath, file);
                         // there's no file in backup folder
+                        // file in deployment list, not in backup folder
                         if (!File.Exists(subBackupFilePath))
                         {
-                            sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
+                            // file in deployment list, in prodcution folder
+                            if (File.Exists(productionFilePath))
+                            {
+                                sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
+                            }
                         }
                         else
                         {
@@ -382,6 +415,16 @@ namespace PrepareForDeployment
                         }
                         sw.WriteLine(Environment.NewLine);
                     }
+                    //
+                    foreach (string file in _arrUnusedFiles)
+                    {
+                        string subBackupFilePath = Path.Combine(_strSubBackupPath, file);
+                        if (File.Exists(subBackupFilePath))
+                        {
+                            sw.WriteLine("copy \"" + subBackupFilePath + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
+                        }
+                    }
+                    sw.WriteLine(Environment.NewLine);
                     // log
                     sw.WriteLine("@echo off");
                     sw.WriteLine("(");
@@ -541,8 +584,12 @@ namespace PrepareForDeployment
             {
                 string text1 = tb_text1.Text;
                 string text2 = tb_text2.Text;
-                rtb_list_files.Text = rtb_list_files.Text.Replace(text1, text2);
-                rtb_list_files.Focus();
+                if (!string.IsNullOrEmpty(text1))
+                {
+                    rtb_list_files.Text = rtb_list_files.Text.Replace(text1, text2);
+                    rtb_unused_files.Text = rtb_unused_files.Text.Replace(text1, text2);
+                    rtb_list_files.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -694,8 +741,8 @@ namespace PrepareForDeployment
                 {
                     if (MessageBox.Show("Do you really want to deploy The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        RunProcessAsAdmin(_strPreDeployBat, "");
-                        // System.Diagnostics.Process.Start(_strDeployBat);
+                        // RunProcessAsAdmin(_strPreDeployBat, "");
+                        System.Diagnostics.Process.Start(_strDeployBat);
                         //
                         WriteLogExeBat("DEPLOY");
                     }
@@ -721,8 +768,8 @@ namespace PrepareForDeployment
                 { 
                     if (MessageBox.Show("Do you really want to restore The Source Code?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        RunProcessAsAdmin(_strRollbackBat, "");
-                        // System.Diagnostics.Process.Start(_strRollbackBat);
+                        // RunProcessAsAdmin(_strRollbackBat, "");
+                        System.Diagnostics.Process.Start(_strRollbackBat);
                         //
                         WriteLogExeBat("ROLLBACK");
                     }
@@ -1025,6 +1072,8 @@ namespace PrepareForDeployment
                         //
                         WriteLogExeBat("PRE-DEPLOY");
                     }
+                    //
+                    // Generate_Deploy_File();
                 }
                 else
                 {
@@ -1055,6 +1104,7 @@ namespace PrepareForDeployment
         private void btn_clean_Click(object sender, EventArgs e)
         {
             CleanRichTextBox(rtb_list_files);
+            CleanRichTextBox(rtb_unused_files);
             rtb_list_files.Focus();
         }
 
