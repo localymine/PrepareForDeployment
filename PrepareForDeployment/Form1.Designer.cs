@@ -46,6 +46,9 @@
             this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rtb_unused_files = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkUnicode = new System.Windows.Forms.CheckBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.btnReadFolder = new System.Windows.Forms.Button();
@@ -76,9 +79,6 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rtb_unused_files = new System.Windows.Forms.RichTextBox();
             this.grProduction.SuspendLayout();
             this.grBackup.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -91,22 +91,26 @@
             // 
             // grProduction
             // 
+            this.grProduction.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grProduction.Controls.Add(this.cb_production_path);
             this.grProduction.Controls.Add(this.btnBrowserProduction);
             this.grProduction.ForeColor = System.Drawing.Color.Tomato;
             this.grProduction.Location = new System.Drawing.Point(12, 32);
             this.grProduction.Name = "grProduction";
-            this.grProduction.Size = new System.Drawing.Size(267, 55);
+            this.grProduction.Size = new System.Drawing.Size(351, 55);
             this.grProduction.TabIndex = 0;
             this.grProduction.TabStop = false;
             this.grProduction.Text = "Production Section";
             // 
             // cb_production_path
             // 
+            this.cb_production_path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_production_path.FormattingEnabled = true;
             this.cb_production_path.Location = new System.Drawing.Point(95, 23);
             this.cb_production_path.Name = "cb_production_path";
-            this.cb_production_path.Size = new System.Drawing.Size(162, 21);
+            this.cb_production_path.Size = new System.Drawing.Size(246, 21);
             this.cb_production_path.TabIndex = 1;
             this.cb_production_path.Leave += new System.EventHandler(this.cb_production_path_Leave);
             // 
@@ -127,6 +131,8 @@
             // 
             // grBackup
             // 
+            this.grBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grBackup.Controls.Add(this.dtpk_cur_time);
             this.grBackup.Controls.Add(this.label5);
             this.grBackup.Controls.Add(this.dtpk_cur_date);
@@ -136,7 +142,7 @@
             this.grBackup.ForeColor = System.Drawing.Color.Tomato;
             this.grBackup.Location = new System.Drawing.Point(12, 154);
             this.grBackup.Name = "grBackup";
-            this.grBackup.Size = new System.Drawing.Size(267, 86);
+            this.grBackup.Size = new System.Drawing.Size(351, 86);
             this.grBackup.TabIndex = 2;
             this.grBackup.TabStop = false;
             this.grBackup.Text = "Backup Section";
@@ -182,10 +188,12 @@
             // 
             // cb_backup_path
             // 
+            this.cb_backup_path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_backup_path.FormattingEnabled = true;
             this.cb_backup_path.Location = new System.Drawing.Point(95, 23);
             this.cb_backup_path.Name = "cb_backup_path";
-            this.cb_backup_path.Size = new System.Drawing.Size(163, 21);
+            this.cb_backup_path.Size = new System.Drawing.Size(247, 21);
             this.cb_backup_path.TabIndex = 3;
             this.cb_backup_path.Leave += new System.EventHandler(this.cb_backup_path_Leave);
             // 
@@ -206,22 +214,26 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tb_sub_deploy_folder);
             this.groupBox3.Controls.Add(this.lb_tb_sub_deploy_folder);
             this.groupBox3.Controls.Add(this.tb_sub_backup_folder);
             this.groupBox3.Controls.Add(this.lb_tb_sub_backup_folder);
             this.groupBox3.Location = new System.Drawing.Point(12, 246);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(267, 86);
+            this.groupBox3.Size = new System.Drawing.Size(351, 86);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Other";
             // 
             // tb_sub_deploy_folder
             // 
+            this.tb_sub_deploy_folder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_sub_deploy_folder.Location = new System.Drawing.Point(142, 49);
             this.tb_sub_deploy_folder.Name = "tb_sub_deploy_folder";
-            this.tb_sub_deploy_folder.Size = new System.Drawing.Size(116, 20);
+            this.tb_sub_deploy_folder.Size = new System.Drawing.Size(200, 20);
             this.tb_sub_deploy_folder.TabIndex = 7;
             this.tb_sub_deploy_folder.Text = "deploy";
             // 
@@ -236,9 +248,11 @@
             // 
             // tb_sub_backup_folder
             // 
+            this.tb_sub_backup_folder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_sub_backup_folder.Location = new System.Drawing.Point(142, 23);
             this.tb_sub_backup_folder.Name = "tb_sub_backup_folder";
-            this.tb_sub_backup_folder.Size = new System.Drawing.Size(116, 20);
+            this.tb_sub_backup_folder.Size = new System.Drawing.Size(200, 20);
             this.tb_sub_backup_folder.TabIndex = 6;
             this.tb_sub_backup_folder.Text = "bk";
             // 
@@ -269,6 +283,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.rtb_unused_files);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label1);
@@ -280,12 +295,38 @@
             this.groupBox4.Controls.Add(this.tb_text1);
             this.groupBox4.Controls.Add(this.btnLoadFile);
             this.groupBox4.Controls.Add(this.rtb_list_files);
-            this.groupBox4.Location = new System.Drawing.Point(285, 33);
+            this.groupBox4.Location = new System.Drawing.Point(369, 33);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(464, 241);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
+            // 
+            // rtb_unused_files
+            // 
+            this.rtb_unused_files.Location = new System.Drawing.Point(6, 186);
+            this.rtb_unused_files.Name = "rtb_unused_files";
+            this.rtb_unused_files.Size = new System.Drawing.Size(452, 47);
+            this.rtb_unused_files.TabIndex = 18;
+            this.rtb_unused_files.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Unused Files";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Deployment Files";
             // 
             // chkUnicode
             // 
@@ -360,8 +401,9 @@
             // 
             // btn_Generate
             // 
+            this.btn_Generate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Generate.Image = ((System.Drawing.Image)(resources.GetObject("btn_Generate.Image")));
-            this.btn_Generate.Location = new System.Drawing.Point(285, 280);
+            this.btn_Generate.Location = new System.Drawing.Point(369, 280);
             this.btn_Generate.Name = "btn_Generate";
             this.btn_Generate.Size = new System.Drawing.Size(140, 52);
             this.btn_Generate.TabIndex = 16;
@@ -370,7 +412,8 @@
             // 
             // btn_run_backup
             // 
-            this.btn_run_backup.Location = new System.Drawing.Point(432, 280);
+            this.btn_run_backup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_run_backup.Location = new System.Drawing.Point(516, 280);
             this.btn_run_backup.Name = "btn_run_backup";
             this.btn_run_backup.Size = new System.Drawing.Size(152, 23);
             this.btn_run_backup.TabIndex = 17;
@@ -380,7 +423,8 @@
             // 
             // btn_run_deploy
             // 
-            this.btn_run_deploy.Location = new System.Drawing.Point(433, 309);
+            this.btn_run_deploy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_run_deploy.Location = new System.Drawing.Point(517, 309);
             this.btn_run_deploy.Name = "btn_run_deploy";
             this.btn_run_deploy.Size = new System.Drawing.Size(152, 23);
             this.btn_run_deploy.TabIndex = 19;
@@ -390,7 +434,8 @@
             // 
             // btn_run_rollback
             // 
-            this.btn_run_rollback.Location = new System.Drawing.Point(591, 309);
+            this.btn_run_rollback.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_run_rollback.Location = new System.Drawing.Point(675, 309);
             this.btn_run_rollback.Name = "btn_run_rollback";
             this.btn_run_rollback.Size = new System.Drawing.Size(152, 23);
             this.btn_run_rollback.TabIndex = 20;
@@ -405,7 +450,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(766, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(850, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -463,12 +508,14 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Location = new System.Drawing.Point(0, 339);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(746, 220);
+            this.panel1.Size = new System.Drawing.Size(836, 220);
             this.panel1.TabIndex = 11;
             // 
             // groupBox5
@@ -478,7 +525,7 @@
             this.groupBox5.Controls.Add(this.btnSave);
             this.groupBox5.Location = new System.Drawing.Point(12, 9);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(731, 208);
+            this.groupBox5.Size = new System.Drawing.Size(821, 208);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Create Release Note";
@@ -487,7 +534,7 @@
             // 
             this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(650, 19);
+            this.btnOpen.Location = new System.Drawing.Point(740, 19);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 25);
             this.btnOpen.TabIndex = 22;
@@ -503,7 +550,7 @@
             this.rtb_release_note.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
             this.rtb_release_note.Name = "rtb_release_note";
-            this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
+            this.rtb_release_note.Size = new System.Drawing.Size(728, 183);
             this.rtb_release_note.TabIndex = 21;
             this.rtb_release_note.Text = "";
             this.rtb_release_note.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_release_note_KeyDown);
@@ -512,7 +559,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(650, 48);
+            this.btnSave.Location = new System.Drawing.Point(740, 48);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.TabIndex = 23;
@@ -521,22 +568,26 @@
             // 
             // grResource
             // 
+            this.grResource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grResource.Controls.Add(this.cb_deployment_path);
             this.grResource.Controls.Add(this.btnBrowserDeployment);
             this.grResource.ForeColor = System.Drawing.Color.DodgerBlue;
             this.grResource.Location = new System.Drawing.Point(12, 93);
             this.grResource.Name = "grResource";
-            this.grResource.Size = new System.Drawing.Size(267, 55);
+            this.grResource.Size = new System.Drawing.Size(351, 55);
             this.grResource.TabIndex = 2;
             this.grResource.TabStop = false;
             this.grResource.Text = "Deployment Resource Section";
             // 
             // cb_deployment_path
             // 
+            this.cb_deployment_path.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_deployment_path.FormattingEnabled = true;
             this.cb_deployment_path.Location = new System.Drawing.Point(95, 23);
             this.cb_deployment_path.Name = "cb_deployment_path";
-            this.cb_deployment_path.Size = new System.Drawing.Size(162, 21);
+            this.cb_deployment_path.Size = new System.Drawing.Size(246, 21);
             this.cb_deployment_path.TabIndex = 2;
             this.cb_deployment_path.Leave += new System.EventHandler(this.cb_deployment_path_Leave);
             // 
@@ -557,8 +608,9 @@
             // 
             // btn_run_pre_deploy
             // 
+            this.btn_run_pre_deploy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_run_pre_deploy.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btn_run_pre_deploy.Location = new System.Drawing.Point(591, 280);
+            this.btn_run_pre_deploy.Location = new System.Drawing.Point(675, 280);
             this.btn_run_pre_deploy.Name = "btn_run_pre_deploy";
             this.btn_run_pre_deploy.Size = new System.Drawing.Size(152, 23);
             this.btn_run_pre_deploy.TabIndex = 18;
@@ -583,35 +635,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 331);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(724, 13);
+            this.label2.Size = new System.Drawing.Size(814, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Deployment Files";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 168);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Unused Files";
-            // 
-            // rtb_unused_files
-            // 
-            this.rtb_unused_files.Location = new System.Drawing.Point(6, 186);
-            this.rtb_unused_files.Name = "rtb_unused_files";
-            this.rtb_unused_files.Size = new System.Drawing.Size(452, 47);
-            this.rtb_unused_files.TabIndex = 18;
-            this.rtb_unused_files.Text = "";
             // 
             // frmMain
             // 
@@ -619,7 +645,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(766, 580);
+            this.ClientSize = new System.Drawing.Size(850, 580);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_collapse);
             this.Controls.Add(this.btn_run_pre_deploy);

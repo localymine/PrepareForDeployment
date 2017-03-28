@@ -46,6 +46,7 @@ namespace PrepareForDeployment
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     _selectedPath = folderDialog.SelectedPath;
+                    txtPath.Text = _selectedPath;
                     Properties.Settings.Default.RecentFolder = _selectedPath;
                     Properties.Settings.Default.Save();
                 }
@@ -115,6 +116,11 @@ namespace PrepareForDeployment
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void txtPath_TextChanged(object sender, EventArgs e)
+        {
+            _selectedPath = txtPath.Text.Trim();
         }
     }
 }
