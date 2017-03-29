@@ -1338,5 +1338,37 @@ namespace PrepareForDeployment
                 this.ResumeLayout();
             }
         }
+
+        ToolTip toolTip = new ToolTip();
+
+        private void ShowToolTip(ComboBox cmb)
+        {
+            //toolTip.ToolTipTitle = "";
+            toolTip.UseFading = true;
+            toolTip.UseAnimation = true;
+            toolTip.IsBalloon = true;
+            toolTip.ShowAlways = true;
+            toolTip.AutoPopDelay = 5000;
+            toolTip.InitialDelay = 50;
+            toolTip.ReshowDelay = 0;
+            toolTip.ToolTipIcon = ToolTipIcon.Info;
+
+            toolTip.SetToolTip(cmb, cmb.Text);
+        }
+        
+        private void cb_production_path_MouseHover(object sender, EventArgs e)
+        {
+            ShowToolTip(cb_production_path);
+        }
+
+        private void cb_deployment_path_MouseHover(object sender, EventArgs e)
+        {
+            ShowToolTip(cb_deployment_path);
+        }
+
+        private void cb_backup_path_MouseHover(object sender, EventArgs e)
+        {
+            ShowToolTip(cb_backup_path);
+        }
     }
 }
