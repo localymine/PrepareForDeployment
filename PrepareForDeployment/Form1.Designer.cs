@@ -113,6 +113,7 @@
             this.cb_production_path.Size = new System.Drawing.Size(246, 21);
             this.cb_production_path.TabIndex = 1;
             this.cb_production_path.Leave += new System.EventHandler(this.cb_production_path_Leave);
+            this.cb_production_path.MouseHover += new System.EventHandler(this.cb_production_path_MouseHover);
             // 
             // btnBrowserProduction
             // 
@@ -196,6 +197,7 @@
             this.cb_backup_path.Size = new System.Drawing.Size(247, 21);
             this.cb_backup_path.TabIndex = 3;
             this.cb_backup_path.Leave += new System.EventHandler(this.cb_backup_path_Leave);
+            this.cb_backup_path.MouseHover += new System.EventHandler(this.cb_backup_path_MouseHover);
             // 
             // btnBrowserBackup
             // 
@@ -590,6 +592,7 @@
             this.cb_deployment_path.Size = new System.Drawing.Size(246, 21);
             this.cb_deployment_path.TabIndex = 2;
             this.cb_deployment_path.Leave += new System.EventHandler(this.cb_deployment_path_Leave);
+            this.cb_deployment_path.MouseHover += new System.EventHandler(this.cb_deployment_path_MouseHover);
             // 
             // btnBrowserDeployment
             // 
