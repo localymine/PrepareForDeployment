@@ -281,6 +281,7 @@
             this.groupBox4.Controls.Add(this.btnLoadFile);
             this.groupBox4.Controls.Add(this.rtb_list_files);
             this.groupBox4.Location = new System.Drawing.Point(285, 33);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(464, 241);
             this.groupBox4.TabIndex = 5;
@@ -431,7 +432,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(766, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(769, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -619,7 +620,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(766, 580);
+            this.ClientSize = new System.Drawing.Size(769, 580);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_collapse);
             this.Controls.Add(this.btn_run_pre_deploy);
