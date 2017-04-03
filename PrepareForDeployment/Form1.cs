@@ -403,10 +403,10 @@ namespace PrepareForDeployment
                         if (!File.Exists(subBackupFilePath))
                         {
                             // file in deployment list, in prodcution folder
-                            if (File.Exists(productionFilePath))
-                            {
+                            // if (File.Exists(productionFilePath)) do not need to check this
+                            // {
                                 sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
-                            }
+                            // }
                         }
                         else
                         {
@@ -565,7 +565,7 @@ namespace PrepareForDeployment
                 Properties.Settings.Default.Save();
                 //
                 rtb_list_files.Clear();
-                using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
+                using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.UTF8, true))
                 {
                     string s = "";
                     while((s = sr.ReadLine()) != null)
@@ -866,7 +866,7 @@ namespace PrepareForDeployment
                     Properties.Settings.Default.Save();
                     //
                     rtb_release_note.Clear();
-                    using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.Default))
+                    using (StreamReader sr = new StreamReader(dialog.FileName, Encoding.UTF8, true))
                     {
                         string s = "";
                         while ((s = sr.ReadLine()) != null)

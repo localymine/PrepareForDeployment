@@ -46,6 +46,9 @@
             this.lb_tb_sub_backup_folder = new System.Windows.Forms.Label();
             this.rtb_list_files = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rtb_unused_files = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkUnicode = new System.Windows.Forms.CheckBox();
             this.btn_clean = new System.Windows.Forms.Button();
             this.btnReadFolder = new System.Windows.Forms.Button();
@@ -76,9 +79,6 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rtb_unused_files = new System.Windows.Forms.RichTextBox();
             this.grProduction.SuspendLayout();
             this.grBackup.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -286,6 +286,32 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "List Files For Deployment";
+            // 
+            // rtb_unused_files
+            // 
+            this.rtb_unused_files.Location = new System.Drawing.Point(6, 186);
+            this.rtb_unused_files.Name = "rtb_unused_files";
+            this.rtb_unused_files.Size = new System.Drawing.Size(452, 47);
+            this.rtb_unused_files.TabIndex = 18;
+            this.rtb_unused_files.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Unused Files";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Deployment Files";
             // 
             // chkUnicode
             // 
@@ -500,7 +526,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb_release_note.BackColor = System.Drawing.SystemColors.Window;
             this.rtb_release_note.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtb_release_note.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtb_release_note.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rtb_release_note.Location = new System.Drawing.Point(6, 19);
             this.rtb_release_note.Name = "rtb_release_note";
             this.rtb_release_note.Size = new System.Drawing.Size(638, 183);
@@ -586,32 +612,6 @@
             this.label2.Size = new System.Drawing.Size(724, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Deployment Files";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 168);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Unused Files";
-            // 
-            // rtb_unused_files
-            // 
-            this.rtb_unused_files.Location = new System.Drawing.Point(6, 186);
-            this.rtb_unused_files.Name = "rtb_unused_files";
-            this.rtb_unused_files.Size = new System.Drawing.Size(452, 47);
-            this.rtb_unused_files.TabIndex = 18;
-            this.rtb_unused_files.Text = "";
             // 
             // frmMain
             // 
