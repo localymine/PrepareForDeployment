@@ -403,7 +403,7 @@ namespace PrepareForDeployment
                         if (!File.Exists(subBackupFilePath))
                         {
                             // file in deployment list, in prodcution folder
-                            // if (File.Exists(productionFilePath)) do not need to check this
+                            // if (File.Exists(productionFilePath))
                             // {
                                 sw.WriteLine("del \"" + Path.Combine(_strProductionPath, file) + "\"");
                             // }
@@ -1337,6 +1337,11 @@ namespace PrepareForDeployment
                 rtb.Redo();
                 this.ResumeLayout();
             }
+        }
+
+        private void btnCurrentTime_Click(object sender, EventArgs e)
+        {
+            dtpk_cur_time.Text = DateTime.Now.ToString("HH:mm tt");
         }
     }
 }
