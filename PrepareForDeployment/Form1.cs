@@ -1338,5 +1338,10 @@ namespace PrepareForDeployment
                 this.ResumeLayout();
             }
         }
+
+        private void btnCurrentTime_Click(object sender, EventArgs e)
+        {
+            dtpk_cur_time.Text = DateTime.Now.ToString("HH:mm tt");
+        }
     }
 }

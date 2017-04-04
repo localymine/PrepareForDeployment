@@ -53,7 +53,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbListFolder.Location = new System.Drawing.Point(3, 66);
             this.rtbListFolder.Name = "rtbListFolder";
-            this.rtbListFolder.Size = new System.Drawing.Size(355, 230);
+            this.rtbListFolder.Size = new System.Drawing.Size(381, 230);
             this.rtbListFolder.TabIndex = 3;
             this.rtbListFolder.Text = "";
             // 
@@ -69,6 +69,8 @@
             // 
             // lbDeployPath
             // 
+            this.lbDeployPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDeployPath.AutoSize = true;
             this.lbDeployPath.Location = new System.Drawing.Point(35, 41);
             this.lbDeployPath.Name = "lbDeployPath";
@@ -77,9 +79,11 @@
             // 
             // txtPath
             // 
+            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPath.Location = new System.Drawing.Point(34, 7);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(324, 20);
+            this.txtPath.Size = new System.Drawing.Size(350, 20);
             this.txtPath.TabIndex = 1;
             this.txtPath.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
             // 
@@ -87,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 305);
+            this.ClientSize = new System.Drawing.Size(393, 305);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.lbDeployPath);
             this.Controls.Add(this.btnMerge);
