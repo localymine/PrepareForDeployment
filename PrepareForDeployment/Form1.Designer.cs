@@ -113,6 +113,7 @@
             this.cb_production_path.Name = "cb_production_path";
             this.cb_production_path.Size = new System.Drawing.Size(248, 21);
             this.cb_production_path.TabIndex = 1;
+            this.cb_production_path.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_production_path_KeyDown);
             this.cb_production_path.Leave += new System.EventHandler(this.cb_production_path_Leave);
             // 
             // btnBrowserProduction
@@ -215,6 +216,7 @@
             this.cb_backup_path.Name = "cb_backup_path";
             this.cb_backup_path.Size = new System.Drawing.Size(249, 21);
             this.cb_backup_path.TabIndex = 3;
+            this.cb_backup_path.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_backup_path_KeyDown);
             this.cb_backup_path.Leave += new System.EventHandler(this.cb_backup_path_Leave);
             // 
             // btnBrowserBackup
@@ -614,6 +616,7 @@
             this.cb_deployment_path.Name = "cb_deployment_path";
             this.cb_deployment_path.Size = new System.Drawing.Size(248, 21);
             this.cb_deployment_path.TabIndex = 2;
+            this.cb_deployment_path.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cb_deployment_path_KeyDown);
             this.cb_deployment_path.Leave += new System.EventHandler(this.cb_deployment_path_Leave);
             // 
             // btnBrowserDeployment

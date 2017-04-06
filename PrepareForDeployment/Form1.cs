@@ -1347,5 +1347,35 @@ namespace PrepareForDeployment
                 rtb_unused_files.Enabled = false;
             }
         }
+
+        private void RemoveItemFromSelectbox(ComboBox cmb, KeyEventArgs e)
+        {
+            if (cmb.Items.Count > 0 && !(string.IsNullOrEmpty(cmb.Text)))
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    if (MessageBox.Show("Item [" + cmb.Text + "]\nwill be removed from this SelectBox.\nDo you want to remove it?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        cmb.Items.Remove(cmb.Text);
+                        cmb.Refresh();
+                    }
+                }
+            }
+        }
+
+        private void cb_production_path_KeyDown(object sender, KeyEventArgs e)
+        {
+            RemoveItemFromSelectbox(cb_production_path, e);
+        }
+
+        private void cb_deployment_path_KeyDown(object sender, KeyEventArgs e)
+        {
+            RemoveItemFromSelectbox(cb_deployment_path, e);
+        }
+
+        private void cb_backup_path_KeyDown(object sender, KeyEventArgs e)
+        {
+            RemoveItemFromSelectbox(cb_backup_path, e);
+        }
     }
 }
