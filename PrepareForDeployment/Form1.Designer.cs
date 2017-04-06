@@ -33,6 +33,7 @@
             this.cb_production_path = new System.Windows.Forms.ComboBox();
             this.btnBrowserProduction = new System.Windows.Forms.Label();
             this.grBackup = new System.Windows.Forms.GroupBox();
+            this.btnCurrentTime = new System.Windows.Forms.Button();
             this.dtpk_cur_time = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpk_cur_date = new System.Windows.Forms.DateTimePicker();
@@ -79,7 +80,6 @@
             this.btn_run_pre_deploy = new System.Windows.Forms.Button();
             this.btn_collapse = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCurrentTime = new System.Windows.Forms.Button();
             this.grProduction.SuspendLayout();
             this.grBackup.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -149,6 +149,24 @@
             this.grBackup.TabStop = false;
             this.grBackup.Text = "Backup Section";
             // 
+            // btnCurrentTime
+            // 
+            this.btnCurrentTime.BackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCurrentTime.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCurrentTime.FlatAppearance.BorderSize = 0;
+            this.btnCurrentTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCurrentTime.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCurrentTime.Image = ((System.Drawing.Image)(resources.GetObject("btnCurrentTime.Image")));
+            this.btnCurrentTime.Location = new System.Drawing.Point(321, 49);
+            this.btnCurrentTime.Name = "btnCurrentTime";
+            this.btnCurrentTime.Size = new System.Drawing.Size(25, 25);
+            this.btnCurrentTime.TabIndex = 7;
+            this.btnCurrentTime.UseVisualStyleBackColor = false;
+            this.btnCurrentTime.Click += new System.EventHandler(this.btnCurrentTime_Click);
+            // 
             // dtpk_cur_time
             // 
             this.dtpk_cur_time.CustomFormat = "HH:mm tt";
@@ -163,7 +181,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(214, 56);
+            this.label5.Location = new System.Drawing.Point(221, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 6;
@@ -173,9 +191,9 @@
             // 
             this.dtpk_cur_date.CustomFormat = "yyyy-MM-dd";
             this.dtpk_cur_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpk_cur_date.Location = new System.Drawing.Point(129, 52);
+            this.dtpk_cur_date.Location = new System.Drawing.Point(122, 52);
             this.dtpk_cur_date.Name = "dtpk_cur_date";
-            this.dtpk_cur_date.Size = new System.Drawing.Size(75, 20);
+            this.dtpk_cur_date.Size = new System.Drawing.Size(98, 20);
             this.dtpk_cur_date.TabIndex = 4;
             // 
             // label4
@@ -284,6 +302,7 @@
             this.rtb_list_files.TabIndex = 15;
             this.rtb_list_files.Text = "";
             this.rtb_list_files.WordWrap = false;
+            this.rtb_list_files.TextChanged += new System.EventHandler(this.rtb_list_files_TextChanged);
             this.rtb_list_files.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_list_files_KeyDown);
             // 
             // groupBox4
@@ -558,6 +577,7 @@
             this.rtb_release_note.Size = new System.Drawing.Size(728, 183);
             this.rtb_release_note.TabIndex = 21;
             this.rtb_release_note.Text = "";
+            this.rtb_release_note.TextChanged += new System.EventHandler(this.rtb_release_note_TextChanged);
             this.rtb_release_note.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtb_release_note_KeyDown);
             // 
             // btnSave
@@ -644,24 +664,6 @@
             this.label2.Size = new System.Drawing.Size(814, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = resources.GetString("label2.Text");
-            // 
-            // btnCurrentTime
-            // 
-            this.btnCurrentTime.BackColor = System.Drawing.Color.Transparent;
-            this.btnCurrentTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCurrentTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCurrentTime.FlatAppearance.BorderSize = 0;
-            this.btnCurrentTime.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnCurrentTime.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnCurrentTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCurrentTime.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCurrentTime.Image = ((System.Drawing.Image)(resources.GetObject("btnCurrentTime.Image")));
-            this.btnCurrentTime.Location = new System.Drawing.Point(321, 49);
-            this.btnCurrentTime.Name = "btnCurrentTime";
-            this.btnCurrentTime.Size = new System.Drawing.Size(25, 25);
-            this.btnCurrentTime.TabIndex = 7;
-            this.btnCurrentTime.UseVisualStyleBackColor = false;
-            this.btnCurrentTime.Click += new System.EventHandler(this.btnCurrentTime_Click);
             // 
             // frmMain
             // 

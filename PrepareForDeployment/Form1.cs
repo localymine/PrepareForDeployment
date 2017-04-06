@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -104,8 +103,9 @@ namespace PrepareForDeployment
             btn_run_deploy.Enabled = flag;
             btn_run_rollback.Enabled = flag;
             btn_run_pre_deploy.Enabled = flag;
-            // btnOpen.Enabled = flag;
-            // btnSave.Enabled = flag;
+            btn_Generate.Enabled = flag;
+            btnSave.Enabled = flag;
+            rtb_unused_files.Enabled = flag;
         }
 
         private void GetInfoFromForm()
@@ -264,14 +264,8 @@ namespace PrepareForDeployment
                             sw.WriteLine("copy \"" + productionFilePath + "\" \"" + Path.Combine(_strSubBackupPath, file) + "\"");
                         }
                     }
-                    sw.WriteLine(Environment.NewLine);
                     // log
-                    sw.WriteLine("@echo off");
-                    sw.WriteLine("(");
-                    sw.WriteLine("@echo Execute Backup at %date% %time%");
-                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
-                    sw.WriteLine(") >> log.txt");
-                    sw.WriteLine(Environment.NewLine);
+                    WriteLogExeBat(sw, "BACKUP");
                     //
                     sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
@@ -352,14 +346,8 @@ namespace PrepareForDeployment
                     {
                         sw.WriteLine("del \"" +  Path.Combine(_strProductionPath, file) + "\"");
                     }
-                    sw.WriteLine(Environment.NewLine);
                     // log
-                    sw.WriteLine("@echo off");
-                    sw.WriteLine("(");
-                    sw.WriteLine("@echo Execute Deploy at %date% %time%");
-                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
-                    sw.WriteLine(") >> log.txt");
-                    sw.WriteLine(Environment.NewLine);
+                    WriteLogExeBat(sw, "DEPLOY");
                     //
                     sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
@@ -424,14 +412,8 @@ namespace PrepareForDeployment
                             sw.WriteLine("copy \"" + subBackupFilePath + "\" \"" + Path.Combine(_strProductionPath, file) + "\"");
                         }
                     }
-                    sw.WriteLine(Environment.NewLine);
                     // log
-                    sw.WriteLine("@echo off");
-                    sw.WriteLine("(");
-                    sw.WriteLine("@echo Execute Rollback at %date% %time%");
-                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
-                    sw.WriteLine(") >> log.txt");
-                    sw.WriteLine(Environment.NewLine);
+                    WriteLogExeBat(sw, "ROLLBACK");
                     //
                     sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
@@ -478,14 +460,8 @@ namespace PrepareForDeployment
                             sw.WriteLine("copy \"" + subResourceFilePath + "\" \"" + Path.Combine(_strSubDeployPath, file) + "\"");
                         }
                     }
-                    sw.WriteLine(Environment.NewLine);
                     // log
-                    sw.WriteLine("@echo off");
-                    sw.WriteLine("(");
-                    sw.WriteLine("@echo Prepare Resource at %date% %time%");
-                    sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
-                    sw.WriteLine(") >> log.txt");
-                    sw.WriteLine(Environment.NewLine);
+                    WriteLogExeBat(sw, "PRE-DEPLOY");
                     //
                     sw.WriteLine("echo DONE");
                     sw.WriteLine("timeout /t 3");
@@ -575,6 +551,7 @@ namespace PrepareForDeployment
                     }
                 }
                 rtb_list_files.Focus();
+                rtb_list_files.Select(0, 0);
             }
         }
 
@@ -622,37 +599,35 @@ namespace PrepareForDeployment
         private void WriteLogExeBat(string type)
         {
             string logFile = Path.Combine(_strBackupPathCur, "log.txt");
-            switch (type)
+            List<KeyValuePair<string, string>> logType = new List<KeyValuePair<string, string>>();
+            logType.Add(new KeyValuePair<string, string>("BACKUP", "Execute Backup"));
+            logType.Add(new KeyValuePair<string, string>("DEPLOY", "Execute Deploy"));
+            logType.Add(new KeyValuePair<string, string>("ROLLBACK", "Execute Rollback"));
+            logType.Add(new KeyValuePair<string, string>("PRE-DEPLOY", "Prepare Resource"));
+
+            using (StreamWriter sw = File.AppendText(logFile))
             {
-                case "BACKUP":
-                    using (StreamWriter sw = File.AppendText(logFile))
-                    {
-                        sw.WriteLine("Execute Backup at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
-                        sw.WriteLine("++--------------------------------------------------------------------------------++");
-                    }
-                    break;
-                case "DEPLOY":
-                    using (StreamWriter sw = File.AppendText(logFile))
-                    {
-                        sw.WriteLine("Execute Deploy at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
-                        sw.WriteLine("++--------------------------------------------------------------------------------++");
-                    }
-                    break;
-                case "ROLLBACK":
-                    using (StreamWriter sw = File.AppendText(logFile))
-                    {
-                        sw.WriteLine("Execute Rollback at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
-                        sw.WriteLine("++--------------------------------------------------------------------------------++");
-                    }
-                    break;
-                case "PRE-DEPLOY":
-                    using (StreamWriter sw = File.AppendText(logFile))
-                    {
-                        sw.WriteLine("Prepare Resource at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
-                        sw.WriteLine("++--------------------------------------------------------------------------------++");
-                    }
-                    break;
+                sw.WriteLine(logType.First(kvp => kvp.Key == type).Value + " at " + DateTime.Now.ToString("ddd dd/MM/yyyy HH:mm:ss.ff"));
+                sw.WriteLine("++--------------------------------------------------------------------------------++");
             }
+        }
+
+        private void WriteLogExeBat(StreamWriter sw, string type)
+        {
+            List<KeyValuePair<string, string>> logType = new List<KeyValuePair<string, string>>();
+            logType.Add(new KeyValuePair<string, string>("BACKUP", "Execute Backup"));
+            logType.Add(new KeyValuePair<string, string>("DEPLOY", "Execute Deploy"));
+            logType.Add(new KeyValuePair<string, string>("ROLLBACK", "Execute Rollback"));
+            logType.Add(new KeyValuePair<string, string>("PRE-DEPLOY", "Prepare Resource"));
+            
+            sw.WriteLine(Environment.NewLine);
+            sw.WriteLine("@echo off");
+            sw.WriteLine("(");
+            sw.WriteLine("@echo " + logType.First(kvp => kvp.Key == type).Value + " at %date% %time%");
+            sw.WriteLine("@echo ++--------------------------------------------------------------------------------++");
+            sw.WriteLine(") >> log.txt");
+            sw.WriteLine(Environment.NewLine);
+            
         }
 
         private void RunProcessAsAdmin(string exePath, string parameters)
@@ -844,7 +819,7 @@ namespace PrepareForDeployment
             }
             catch (Exception ex)
             {
-
+                
             }
         }
 
@@ -876,6 +851,7 @@ namespace PrepareForDeployment
                         }
                     }
                     rtb_release_note.Focus();
+                    rtb_release_note.Select(0, 0);
                 }
             }
             catch(Exception ex)
@@ -1342,6 +1318,34 @@ namespace PrepareForDeployment
         private void btnCurrentTime_Click(object sender, EventArgs e)
         {
             dtpk_cur_time.Text = DateTime.Now.ToString("HH:mm tt");
+        }
+
+        private void rtb_release_note_TextChanged(object sender, EventArgs e)
+        {
+            string rtbcheck = rtb_release_note.Text.Trim();
+            if (!string.IsNullOrEmpty(rtbcheck) || !string.IsNullOrWhiteSpace(rtbcheck))
+            {
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                btnSave.Enabled = false;
+            }
+        }
+
+        private void rtb_list_files_TextChanged(object sender, EventArgs e)
+        {
+            string rtbcheck = rtb_list_files.Text.Trim();
+            if (!string.IsNullOrEmpty(rtbcheck) || !string.IsNullOrWhiteSpace(rtbcheck))
+            {
+                btn_Generate.Enabled = true;
+                rtb_unused_files.Enabled = true;
+            }
+            else
+            {
+                btn_Generate.Enabled = false;
+                rtb_unused_files.Enabled = false;
+            }
         }
     }
 }
