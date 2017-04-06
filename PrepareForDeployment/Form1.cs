@@ -570,7 +570,7 @@ namespace PrepareForDeployment
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             
         }
@@ -790,7 +790,9 @@ namespace PrepareForDeployment
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -819,7 +821,7 @@ namespace PrepareForDeployment
             }
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -856,7 +858,7 @@ namespace PrepareForDeployment
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -942,7 +944,7 @@ namespace PrepareForDeployment
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -1350,14 +1352,44 @@ namespace PrepareForDeployment
 
         private void RemoveItemFromSelectbox(ComboBox cmb, KeyEventArgs e)
         {
+            // delete text by ctrl + back
+            if((e.KeyCode == Keys.Back) && e.Control)
+            {
+                for(int i = cmb.SelectionStart - 1; i > 0; i--)
+                {
+                    switch (cmb.Text.Substring(i, 1))
+                    {
+                        // set stopping point
+                        case " ":
+                        case ";":
+                        case ",":
+                        case "/":
+                        case "\\":
+                            cmb.Text = cmb.Text.Remove(i, cmb.SelectionStart - i);
+                            cmb.SelectionStart = i;
+                            return;
+                        case "\n":
+                            cmb.Text = cmb.Text.Remove(i - 1, cmb.SelectionStart - i);
+                            cmb.SelectionStart = i;
+                            return;
+                    }
+                }
+                // in case never hit a stopping point
+                cmb.Text = "";
+                return;
+            }
+            //
             if (cmb.Items.Count > 0 && !(string.IsNullOrEmpty(cmb.Text)))
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    if (MessageBox.Show("Item [" + cmb.Text + "]\nwill be removed from this SelectBox.\nDo you want to remove it?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (cmb.Items.Contains(cmb.Text))
                     {
-                        cmb.Items.Remove(cmb.Text);
-                        cmb.Refresh();
+                        if (MessageBox.Show("Item [" + cmb.Text + "]\nwill be removed from this SelectBox.\nDo you want to remove it?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            cmb.Items.Remove(cmb.Text);
+                            cmb.Refresh();
+                        }
                     }
                 }
             }
