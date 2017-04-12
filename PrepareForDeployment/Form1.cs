@@ -89,12 +89,21 @@ namespace PrepareForDeployment
                 Generate_Rollback_File();
 
                 // active button control
-                DisableEnableControl(true);
+                EnableControl(btn_Generate);
+                EnableControl(btn_run_backup);
+                EnableControl(btn_run_pre_deploy);
+                EnableControl(btn_run_deploy);
+                EnableControl(btn_run_rollback);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void EnableControl(Control control, bool flag = true)
+        {
+            control.Enabled = flag;
         }
 
         private void DisableEnableControl(bool flag)
@@ -1334,11 +1343,11 @@ namespace PrepareForDeployment
             string rtbcheck = rtb_release_note.Text.Trim();
             if (!string.IsNullOrEmpty(rtbcheck) || !string.IsNullOrWhiteSpace(rtbcheck))
             {
-                btnSave.Enabled = true;
+                EnableControl(btnSave);
             }
             else
             {
-                btnSave.Enabled = false;
+                EnableControl(btnSave, false);
             }
         }
 
@@ -1347,13 +1356,17 @@ namespace PrepareForDeployment
             string rtbcheck = rtb_list_files.Text.Trim();
             if (!string.IsNullOrEmpty(rtbcheck) || !string.IsNullOrWhiteSpace(rtbcheck))
             {
-                btn_Generate.Enabled = true;
-                rtb_unused_files.Enabled = true;
+                EnableControl(btn_Generate);
+                EnableControl(rtb_unused_files);
             }
             else
             {
-                btn_Generate.Enabled = false;
-                rtb_unused_files.Enabled = false;
+                EnableControl(btn_Generate, false);
+                EnableControl(btn_run_backup, false);
+                EnableControl(btn_run_pre_deploy, false);
+                EnableControl(btn_run_deploy, false);
+                EnableControl(btn_run_rollback, false);
+                EnableControl(rtb_unused_files, false);
             }
         }
 

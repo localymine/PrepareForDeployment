@@ -360,9 +360,9 @@
             this.chkUnicode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkUnicode.Location = new System.Drawing.Point(68, 23);
             this.chkUnicode.Name = "chkUnicode";
-            this.chkUnicode.Size = new System.Drawing.Size(85, 17);
+            this.chkUnicode.Size = new System.Drawing.Size(63, 17);
             this.chkUnicode.TabIndex = 10;
-            this.chkUnicode.Text = "Use Unicode";
+            this.chkUnicode.Text = "Unicode";
             this.chkUnicode.UseVisualStyleBackColor = true;
             // 
             // btn_clean
@@ -539,7 +539,7 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.groupBox5);
-            this.panel1.Location = new System.Drawing.Point(0, 339);
+            this.panel1.Location = new System.Drawing.Point(0, 338);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(836, 220);
             this.panel1.TabIndex = 11;
@@ -652,7 +652,7 @@
             this.btn_collapse.BackColor = System.Drawing.Color.Transparent;
             this.btn_collapse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_collapse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_collapse.Location = new System.Drawing.Point(7, 333);
+            this.btn_collapse.Location = new System.Drawing.Point(7, 332);
             this.btn_collapse.Name = "btn_collapse";
             this.btn_collapse.Size = new System.Drawing.Size(22, 17);
             this.btn_collapse.TabIndex = 13;
@@ -663,8 +663,10 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(24, 340);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(24, 339);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(814, 2);
             this.label2.TabIndex = 14;
