@@ -810,9 +810,16 @@ namespace PrepareForDeployment
                 // make folder
                 MkdirFolder(_strBackupPathCur);
                 //
+                string currentDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm tt");
+                bool flag = true;
                 string noteFile = @Path.Combine(_strBackupPathCur, "ReleaseNote.txt");
                 using (StreamWriter sw = File.CreateText(noteFile))
                 {
+                    if (flag)
+                    {
+                        sw.WriteLine("#Datetime " + currentDateTime);
+                        flag = false;
+                    }
                     sw.WriteLine(rtb_release_note.Text);
                 }
                 //
