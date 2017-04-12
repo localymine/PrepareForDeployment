@@ -661,12 +661,13 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 331);
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(24, 340);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(814, 13);
+            this.label2.Size = new System.Drawing.Size(814, 2);
             this.label2.TabIndex = 14;
-            this.label2.Text = resources.GetString("label2.Text");
             // 
             // frmMain
             // 
