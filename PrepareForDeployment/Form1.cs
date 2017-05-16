@@ -1336,6 +1336,7 @@ namespace PrepareForDeployment
         private void btnCurrentTime_Click(object sender, EventArgs e)
         {
             dtpk_cur_time.Text = DateTime.Now.ToString("HH:mm tt");
+            dtpk_cur_date.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void rtb_release_note_TextChanged(object sender, EventArgs e)
